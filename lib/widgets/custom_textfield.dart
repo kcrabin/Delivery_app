@@ -3,6 +3,8 @@ import 'package:flutter/material.dart';
 
 class CustomTextfield extends StatelessWidget {
   String hint;
+  String? label;
+
   IconData? suffixIcon;
   TextInputAction? inputAction;
   TextInputType? inputType;
@@ -10,6 +12,7 @@ class CustomTextfield extends StatelessWidget {
   CustomTextfield(
       {Key? key,
       required this.hint,
+      this.label,
       this.suffixIcon,
       this.inputAction,
       this.inputType,
@@ -32,6 +35,7 @@ class CustomTextfield extends StatelessWidget {
 
           // hintText: "Enter your email",
           hintText: hint,
+          labelText: label,
           hintStyle: TextStyle(fontSize: 20),
           suffixIcon: Icon(suffixIcon)),
     );

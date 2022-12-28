@@ -8,7 +8,10 @@ import 'package:deliveryapp/modules/new_order/new_order.dart';
 import 'package:deliveryapp/modules/new_order/widgets/address_selection_page.dart';
 import 'package:deliveryapp/modules/new_order/widgets/map_screen.dart';
 import 'package:deliveryapp/modules/orders/orders.dart';
+import 'package:deliveryapp/modules/profile/About_us.dart';
+import 'package:deliveryapp/modules/profile/personal_information.dart';
 import 'package:deliveryapp/modules/profile/profile.dart';
+import 'package:deliveryapp/modules/profile/report_problem.dart';
 import 'package:deliveryapp/modules/startup_pages/city_selection_page.dart';
 import 'package:deliveryapp/modules/startup_pages/country_list.dart';
 import 'package:deliveryapp/modules/startup_pages/nationality_selection_page.dart';
@@ -48,6 +51,9 @@ class MyApp extends StatelessWidget {
         'countryListScreen': (context) => CountryList(),
         'citySelectionScreen': (context) => CitySelectionPage(),
         'introductionScreen': (context) => IntroductionPage(),
+        'aboutUsScreen': (context) => About_us(),
+        'personalInformationScreen': (context) => PersonalInformation(),
+        'reportProblemScreen': (context) => ReportProblem(),
       },
       // home: Orders(),
     );

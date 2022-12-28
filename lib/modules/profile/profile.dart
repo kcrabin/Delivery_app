@@ -1,7 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:flutter/src/widgets/container.dart';
-import 'package:flutter/src/widgets/framework.dart';
-import 'package:geolocator/geolocator.dart';
 
 import '../constants.dart';
 
@@ -11,13 +8,22 @@ class Profile extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      backgroundColor: Colors.white,
+      appBar: AppBar(elevation: 0, backgroundColor: Colors.white, actions: [
+        TextButton(
+            onPressed: () {},
+            child: Text(
+              'Log out',
+              style: TextStyle(color: blueColor, fontSize: 18),
+            ))
+      ]),
       body: Padding(
         padding: const EdgeInsets.all(8.0),
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
             SizedBox(
-              height: MediaQuery.of(context).size.height * 0.1,
+              height: MediaQuery.of(context).size.height * 0.02,
             ),
             Text(
               'Hello!',
@@ -26,58 +32,48 @@ class Profile extends StatelessWidget {
             SizedBox(
               height: MediaQuery.of(context).size.height * 0.05,
             ),
-            Row(
-              mainAxisAlignment: MainAxisAlignment.spaceBetween,
-              children: [
-                Row(
-                  children: [
-                    Icon(
-                      Icons.public,
-                      color: Colors.grey,
-                    ),
-                    SizedBox(
-                      width: 10,
-                    ),
-                    Text(
-                      'Region',
-                      style: TextStyle(fontSize: 18),
-                    )
-                  ],
-                ),
-                Row(
-                  children: [
-                    Text(
-                      'Pokhara',
-                      style: TextStyle(fontSize: 18, color: Colors.grey),
-                    ),
-                    SizedBox(
-                      width: 10,
-                    ),
-                    Image.asset(
-                      'assets/images/nepal.png',
-                      height: 20,
-                    )
-                  ],
-                )
-              ],
+            InkWell(
+              onTap: () {
+                Navigator.pushNamed(context, 'personalInformationScreen');
+              },
+              child: Row(
+                children: [
+                  Icon(
+                    Icons.person_outline,
+                    color: Colors.grey,
+                  ),
+                  SizedBox(
+                    width: 10,
+                  ),
+                  Text(
+                    'Personal Information',
+                    style: TextStyle(fontSize: 18),
+                  )
+                ],
+              ),
             ),
             SizedBox(
               height: MediaQuery.of(context).size.height * 0.03,
             ),
-            Row(
-              children: [
-                Icon(
-                  Icons.info,
-                  color: Colors.grey,
-                ),
-                SizedBox(
-                  width: 10,
-                ),
-                Text(
-                  'About',
-                  style: TextStyle(fontSize: 18),
-                )
-              ],
+            InkWell(
+              onTap: () {
+                Navigator.pushNamed(context, 'aboutUsScreen');
+              },
+              child: Row(
+                children: [
+                  Icon(
+                    Icons.info,
+                    color: Colors.grey,
+                  ),
+                  SizedBox(
+                    width: 10,
+                  ),
+                  Text(
+                    'About',
+                    style: TextStyle(fontSize: 18),
+                  )
+                ],
+              ),
             ),
             Spacer(),
             ElevatedButton(
