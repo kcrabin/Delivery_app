@@ -4,9 +4,10 @@ import 'package:flutter/material.dart';
 class Utils {
   static final messangerKey = GlobalKey<ScaffoldMessengerState>();
 
-  static showSnackBar(String? text, Color color) {
+  static showSnackBar(String? text, Color color, double bottom) {
     if (text == null) return;
     final snackBar = SnackBar(
+      margin: EdgeInsets.only(bottom: bottom, left: 10, right: 10),
       shape: StadiumBorder(),
       behavior: SnackBarBehavior.floating,
       elevation: 0,

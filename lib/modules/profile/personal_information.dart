@@ -1,4 +1,4 @@
-import 'package:deliveryapp/widgets/custom_textfield.dart';
+import 'package:deliveryapp/widgets/custom_textfieldAdditionalService.dart';
 import 'package:flutter/material.dart';
 
 class PersonalInformation extends StatefulWidget {
@@ -58,28 +58,28 @@ class _PersonalInformationState extends State<PersonalInformation> {
       body: Padding(
         padding: const EdgeInsets.symmetric(vertical: 10, horizontal: 10),
         child: Column(children: [
-          CustomTextfield(
+          CustomTextfieldAdditionalService(
             hint: 'Surname',
             controller: surnameController,
           ),
           SizedBox(
             height: 10,
           ),
-          CustomTextfield(
+          CustomTextfieldAdditionalService(
             hint: 'First name',
             controller: firstnameController,
           ),
           SizedBox(
             height: 10,
           ),
-          CustomTextfield(
+          CustomTextfieldAdditionalService(
             hint: 'Middle name',
             controller: middlenameController,
           ),
           SizedBox(
             height: 10,
           ),
-          CustomTextfield(
+          CustomTextfieldAdditionalService(
             hint: 'Email for authorization',
             controller: emailController,
           ),

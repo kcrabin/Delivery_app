@@ -34,7 +34,7 @@ class _CitySelectionPageState extends State<CitySelectionPage> {
     final SharedPreferences pref = await SharedPreferences.getInstance();
     print('this id shared pref ---${pref.getString('country')}');
     setState(() {
-      countrySelected = pref.getString('country')!;
+      countrySelected = pref.getString('country') ?? '🇳🇵 Nepal';
     });
   }
 

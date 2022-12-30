@@ -1,26 +1,19 @@
 import 'package:deliveryapp/modules/constants.dart';
-import 'package:deliveryapp/widgets/utils.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_otp_text_field/flutter_otp_text_field.dart';
 
-class VerifyOTP extends StatefulWidget {
-  const VerifyOTP({super.key});
+class VerifyPasswordWithOTP extends StatefulWidget {
+  const VerifyPasswordWithOTP({super.key});
 
   @override
-  State<VerifyOTP> createState() => _VerifyOTPState();
+  State<VerifyPasswordWithOTP> createState() => _VerifyPasswordWithOTPState();
 }
 
-class _VerifyOTPState extends State<VerifyOTP> {
-  String phoneNumber = '0000000000';
+class _VerifyPasswordWithOTPState extends State<VerifyPasswordWithOTP> {
   bool invalidOTP = true;
 
   @override
   Widget build(BuildContext context) {
-    final arguments = (ModalRoute.of(context)?.settings.arguments ??
-        <String, dynamic>{}) as Map;
-    setState(() {
-      phoneNumber = arguments['phoneNumber'];
-    });
     return Scaffold(
       backgroundColor: Colors.white,
       appBar: AppBar(
@@ -43,17 +36,10 @@ class _VerifyOTPState extends State<VerifyOTP> {
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
             Text(
-              'Mobile No ',
+              'Verify OTP to reset password. ',
               style: TextStyle(
                 fontSize: 32,
                 fontWeight: FontWeight.bold,
-              ),
-            ),
-            Text(
-              'OTP will be sent on this $phoneNumber',
-              style: TextStyle(
-                color: Colors.grey,
-                fontSize: 18,
               ),
             ),
             SizedBox(
@@ -122,12 +108,7 @@ class _VerifyOTPState extends State<VerifyOTP> {
                       minimumSize: Size(65, 50)),
                   onPressed: () {
                     if (invalidOTP == false) {
-                      Navigator.pushNamed(context, 'orderScreen');
-                      Utils.showSnackBar('Registered successfully', blueColor,
-                          MediaQuery.of(context).size.height - 100);
-                    } else {
-                      Utils.showSnackBar('Invalid OTP', Colors.red,
-                          MediaQuery.of(context).size.height - 100);
+                      Navigator.pushNamed(context, 'resetPasswordScreen');
                     }
                   },
                 ),

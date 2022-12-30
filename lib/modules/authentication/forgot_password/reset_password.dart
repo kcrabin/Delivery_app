@@ -1,20 +1,18 @@
-import 'package:deliveryapp/widgets/custom_textfieldAdditionalService.dart';
 import 'package:flutter/material.dart';
 
 import '../../../widgets/utils.dart';
 import '../../constants.dart';
 
-class ForgotPassword extends StatefulWidget {
-  const ForgotPassword({super.key});
+class ResetPassword extends StatefulWidget {
+  const ResetPassword({super.key});
 
   @override
-  State<ForgotPassword> createState() => _ForgotPasswordState();
+  State<ResetPassword> createState() => ResetPasswordState();
 }
 
-class _ForgotPasswordState extends State<ForgotPassword> {
+class ResetPasswordState extends State<ResetPassword> {
   final _formKey = GlobalKey<FormState>();
   TextEditingController phoneController = TextEditingController();
-
   @override
   void dispose() {
     phoneController.dispose();
@@ -47,22 +45,18 @@ class _ForgotPasswordState extends State<ForgotPassword> {
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
               Text(
-                'Your phone',
+                'Enter your new password.',
                 style: TextStyle(fontSize: 32, fontWeight: FontWeight.bold),
-              ),
-              Text(
-                'An SMS verification code will be sent to this number.',
-                style: TextStyle(color: Colors.grey, fontSize: 18),
               ),
               SizedBox(
                 height: 20,
               ),
               TextFormField(
-                keyboardType: TextInputType.phone,
+                keyboardType: TextInputType.name,
                 controller: phoneController,
                 // initialValue: '+977',
                 decoration: InputDecoration(
-                  labelText: 'Phone number',
+                  labelText: 'New password',
                   enabledBorder: UnderlineInputBorder(
                       borderSide: BorderSide(color: Colors.grey, width: 1)),
                   focusedBorder: UnderlineInputBorder(
@@ -71,32 +65,37 @@ class _ForgotPasswordState extends State<ForgotPassword> {
                 ),
                 validator: (value) {
                   if (value!.isEmpty) {
-                    return "Please Enter Phone number";
-                  } else if (phoneController.text.length < 10) {
-                    return "Enter valid Phone number";
+                    return "Please Enter new password.";
+                  } else if (phoneController.text.length < 6) {
+                    return "Password cannot be less than 6 characters.";
                   }
                 },
               ),
               Spacer(),
               Align(
-                alignment: Alignment.centerRight,
+                alignment: Alignment.center,
                 child: ElevatedButton(
-                  child: Icon(
-                    Icons.arrow_forward,
-                    color: Colors.white,
+                  child: Text(
+                    'Submit',
+                    style: TextStyle(fontSize: 22),
                   ),
                   style: ElevatedButton.styleFrom(
                       elevation: 0,
-                      backgroundColor: Colors.grey.shade400,
+                      backgroundColor: blueColor,
                       shape: const RoundedRectangleBorder(
                         borderRadius: BorderRadius.all(
                           Radius.circular(25),
                         ),
                       ),
-                      minimumSize: Size(65, 50)),
+                      minimumSize:
+                          Size(MediaQuery.of(context).size.width * 0.9, 50)),
                   onPressed: () {
                     if (_formKey.currentState!.validate()) {
-                      Navigator.pushNamed(context, 'verifyPasswordWithOTP');
+                      Utils.showSnackBar(
+                          'Your password has been changed successfully.',
+                          blueColor,
+                          MediaQuery.of(context).size.height - 150);
+                      Navigator.pushNamed(context, 'orderScreen');
                     }
                   },
                 ),

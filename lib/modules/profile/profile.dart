@@ -17,7 +17,7 @@ class _ProfileState extends State<Profile> {
     final SharedPreferences pref = await SharedPreferences.getInstance();
     print('this id shared pref ---${pref.getString('country')}');
     setState(() {
-      region = pref.getString('country')!;
+      region = pref.getString('country') ?? '🇳🇵 Nepal';
     });
   }
 

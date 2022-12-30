@@ -8,7 +8,7 @@ class MapScreen extends StatefulWidget {
 }
 
 class _MapScreenState extends State<MapScreen> {
-  double currentLatitude = 0, currentLongitude = 0;
+  double currentLatitude = 28.209499, currentLongitude = 83.959518;
   String selectedLocation = '';
 
   // getLocation() async {
@@ -39,7 +39,10 @@ class _MapScreenState extends State<MapScreen> {
             color: Colors.black,
           ),
           onPressed: () {
-            Navigator.pop(context);
+            Navigator.of(context).pop({
+              'latitude': currentLatitude.toString(),
+              'longitude': currentLongitude.toString(),
+            });
           },
         ),
         actions: [

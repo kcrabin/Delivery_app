@@ -26,6 +26,7 @@ class _AddressSelectionState extends State<AddressSelection> {
 
   void updateLocation(Map<String, String> location) async {
     // print('location passed inside update location ----$location');
+
     latitude = double.parse(location['latitude']!);
     longitude = double.parse(location['longitude']!);
 

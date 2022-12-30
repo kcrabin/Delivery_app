@@ -3,6 +3,7 @@ import 'package:deliveryapp/widgets/custom_toogleswitch.dart';
 import 'package:flutter/material.dart';
 import 'package:smooth_page_indicator/smooth_page_indicator.dart';
 
+import '../../widgets/utils.dart';
 import '../constants.dart';
 import 'widgets/delivery_bottomsheet.dart';
 import 'widgets/delivery_point.dart';
@@ -850,7 +851,7 @@ class _NewOrderState extends State<NewOrder> {
                 ),
                 PaymentContainer(),
                 SizedBox(
-                  height: 50,
+                  height: 100,
                 )
               ],
             ),
@@ -928,7 +929,11 @@ class _NewOrderState extends State<NewOrder> {
                     ),
                     minimumSize:
                         Size(MediaQuery.of(context).size.width / 2.5, 50)),
-                onPressed: () {},
+                onPressed: () {
+                  Utils.showSnackBar('Your order has been placed successfully',
+                      blueColor, MediaQuery.of(context).size.height - 150);
+                  Navigator.pushNamed(context, 'orderScreen');
+                },
               ),
             ],
           ),

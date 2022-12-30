@@ -1,4 +1,6 @@
 import 'package:deliveryapp/modules/authentication/forgot_password/forgot_password.dart';
+import 'package:deliveryapp/modules/authentication/forgot_password/reset_password.dart';
+import 'package:deliveryapp/modules/authentication/forgot_password/verify_password.dart';
 import 'package:deliveryapp/modules/authentication/login/login.dart';
 import 'package:deliveryapp/modules/authentication/register/register.dart';
 import 'package:deliveryapp/modules/authentication/register/widgets/verify_otp.dart';
@@ -65,6 +67,8 @@ class MyApp extends StatelessWidget {
         'reportProblemScreen': (context) => ReportProblem(),
         'verifyOtpScreen': (context) => VerifyOTP(),
         'splashScreen': (context) => SplashScreen(),
+        'verifyPasswordWithOTP': (context) => VerifyPasswordWithOTP(),
+        'resetPasswordScreen': (context) => ResetPassword(),
       },
       // home: Orders(),
     );

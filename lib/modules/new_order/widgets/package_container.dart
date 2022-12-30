@@ -97,7 +97,10 @@ class _PackageContainerState extends State<PackageContainer> {
           SizedBox(
             height: 10,
           ),
-          CustomTextfield(hint: 'Your phone'),
+          CustomTextfield(
+            hint: 'Your phone',
+            inputType: TextInputType.phone,
+          ),
         ],
       ),
     );
