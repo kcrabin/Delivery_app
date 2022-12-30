@@ -1,6 +1,7 @@
+import 'package:deliveryapp/widgets/sp_utils.dart';
+import 'package:deliveryapp/widgets/storage.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/src/widgets/container.dart';
-import 'package:flutter/src/widgets/framework.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 
 class CountryList extends StatefulWidget {
   const CountryList({super.key});
@@ -59,10 +60,19 @@ class _CountryListState extends State<CountryList> {
             return Padding(
               padding: const EdgeInsets.symmetric(vertical: 15, horizontal: 20),
               child: GestureDetector(
-                onTap: () {
+                onTap: () async {
+                  SharedPreferences pref =
+                      await SharedPreferences.getInstance();
+
                   setState(() {
                     countrySelected = countries[index];
+
+                    // print('checking country  $countrySelected');
                   });
+                  // pref.setString(ConstantsStrings.country, countrySelected);
+                  SPUtil.writeString(ConstantsStrings.name, countrySelected);
+                  // print(SPUtil.read(ConstantsStrings.name));
+
                   Navigator.pop(context, countrySelected);
                 },
                 child: Row(

@@ -24,17 +24,17 @@ class _AddressSelectionState extends State<AddressSelection> {
   }
 
   void updateLocation(Map<String, String> location) async {
-    print('location passed inside update location ----$location');
+    // print('location passed inside update location ----$location');
     latitude = double.parse(location['latitude']!);
     longitude = double.parse(location['longitude']!);
 
     List<Placemark> placemarks =
         await placemarkFromCoordinates(latitude, longitude);
-    print(placemarks);
+    // print(placemarks);
     Placemark place = placemarks[0];
     String address =
         '${place.street}, ${place.subLocality}, ${place.locality}, ${place.postalCode}, ${place.country}';
-    print('address from latitude longitude $address');
+    // print('address from latitude longitude $address');
 
     setState(() {
       selectedAddress = address;

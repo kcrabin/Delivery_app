@@ -123,6 +123,12 @@ class _NewOrderState extends State<NewOrder> {
   }
 
   @override
+  void dispose() {
+    _pageController.dispose();
+    super.dispose();
+  }
+
+  @override
   Widget build(BuildContext context) {
     return SafeArea(
       child: Scaffold(
@@ -678,7 +684,7 @@ class _NewOrderState extends State<NewOrder> {
                         shrinkWrap: true,
                         itemCount: deliveryPoints.length,
                         itemBuilder: ((context, index) {
-                          print("this is inside listview $index");
+                          // print("this is inside listview $index");
                           return deliveryPoints[index];
                         })),
 

@@ -11,7 +11,9 @@ class Profile extends StatelessWidget {
       backgroundColor: Colors.white,
       appBar: AppBar(elevation: 0, backgroundColor: Colors.white, actions: [
         TextButton(
-            onPressed: () {},
+            onPressed: () {
+              Navigator.pushNamed(context, 'orderScreen');
+            },
             child: Text(
               'Log out',
               style: TextStyle(color: blueColor, fontSize: 18),
@@ -98,7 +100,9 @@ class Profile extends StatelessWidget {
             Align(
               alignment: Alignment.center,
               child: TextButton(
-                  onPressed: () {},
+                  onPressed: () {
+                    Navigator.pushNamed(context, 'registerScreen');
+                  },
                   child: Text(
                     'Create account',
                     style: TextStyle(color: blueColor, fontSize: 20),

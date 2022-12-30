@@ -4,6 +4,7 @@ import 'package:flutter/material.dart';
 class CustomTextfield extends StatelessWidget {
   String hint;
   String? label;
+  String? initialValue;
 
   IconData? suffixIcon;
   TextInputAction? inputAction;
@@ -13,6 +14,7 @@ class CustomTextfield extends StatelessWidget {
       {Key? key,
       required this.hint,
       this.label,
+      this.initialValue,
       this.suffixIcon,
       this.inputAction,
       this.inputType,
@@ -21,19 +23,17 @@ class CustomTextfield extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return TextField(
+    return TextFormField(
       textInputAction: inputAction,
       keyboardType: inputType,
       controller: controller,
-      // controller: this._emailController,
+      initialValue: initialValue,
       decoration: InputDecoration(
           enabledBorder: UnderlineInputBorder(
               borderSide: BorderSide(color: Colors.grey, width: 1)),
           focusedBorder: UnderlineInputBorder(
             borderSide: BorderSide(color: blueColor, width: 1),
           ),
-
-          // hintText: "Enter your email",
           hintText: hint,
           labelText: label,
           hintStyle: TextStyle(fontSize: 20),

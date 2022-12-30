@@ -23,12 +23,24 @@ class DeliveryPoint extends StatefulWidget {
 }
 
 class _DeliveryPointState extends State<DeliveryPoint> {
+  TextEditingController phoneController = TextEditingController();
+  TextEditingController contactPersonController = TextEditingController();
+  TextEditingController orderNumberController = TextEditingController();
+
   bool cashOnDelivery = false;
 
   bool buyForMe = false;
   bool clickedAdditionalServices = false;
 
   String locationSelected = '';
+
+  @override
+  void dispose() {
+    phoneController.dispose();
+    contactPersonController.dispose();
+    orderNumberController.dispose();
+    super.dispose();
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -93,7 +105,7 @@ class _DeliveryPointState extends State<DeliveryPoint> {
                               context, 'addressSelectionScreen', arguments: {
                             'addressPassed': locationSelected
                           }) as String;
-                          print('location in delivery_point $location');
+                          // print('location in delivery_point $location');
                           setState(() {
                             locationSelected = location;
                           });
@@ -172,7 +184,7 @@ class _DeliveryPointState extends State<DeliveryPoint> {
                         hint: 'Phone number',
                         suffixIcon: Icons.person_outline_sharp,
                         inputType: TextInputType.phone,
-                        inputAction: TextInputAction.next,
+                        controller: phoneController,
                       )),
                       widget.isScheduleClicked == true
                           ? SizedBox(
@@ -421,14 +433,14 @@ class _DeliveryPointState extends State<DeliveryPoint> {
                                     child: CustomTextfield(
                                       hint: 'Contact person',
                                       inputType: TextInputType.name,
-                                      inputAction: TextInputAction.next,
+                                      controller: contactPersonController,
                                     ),
                                   ),
                                   SizedBox(
                                     child: CustomTextfield(
                                       hint: 'Your order number',
                                       inputType: TextInputType.name,
-                                      inputAction: TextInputAction.next,
+                                      controller: orderNumberController,
                                     ),
                                   ),
                                 ],
@@ -444,8 +456,8 @@ class _DeliveryPointState extends State<DeliveryPoint> {
                               child: TextButton(
                                   onPressed: () {
                                     widget.removePoints(widget.index);
-                                    print(
-                                        'is schedule chicked :${widget.isScheduleClicked}');
+                                    // print(
+                                    //     'is schedule chicked :${widget.isScheduleClicked}');
                                   },
                                   child: Text(
                                     'Remove address',

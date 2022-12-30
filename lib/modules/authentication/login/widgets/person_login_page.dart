@@ -10,7 +10,7 @@ class PersonLoginPage extends StatefulWidget {
 }
 
 class _PersonLoginPageState extends State<PersonLoginPage> {
-  TextEditingController phoneController = TextEditingController();
+  TextEditingController phoneController = TextEditingController(text: '+977 ');
   TextEditingController passwordController = TextEditingController();
 
   bool passToggle = true;
@@ -22,6 +22,7 @@ class _PersonLoginPageState extends State<PersonLoginPage> {
         TextFormField(
           keyboardType: TextInputType.emailAddress,
           controller: phoneController,
+          // initialValue: '+977',
           decoration: InputDecoration(
             labelText: 'Phone number',
             enabledBorder: UnderlineInputBorder(
@@ -36,11 +37,6 @@ class _PersonLoginPageState extends State<PersonLoginPage> {
             } else if (phoneController.text.length < 10) {
               return "Enter valid Phone number";
             }
-            // if (value!.isEmpty) {
-            //   return "Please Enter Email";
-            // } else if (!emailValid) {
-            //   return "Enter valid Email";
-            // }
           },
         ),
         TextFormField(

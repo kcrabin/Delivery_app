@@ -1,4 +1,6 @@
 import 'package:deliveryapp/modules/constants.dart';
+import 'package:deliveryapp/widgets/sp_utils.dart';
+import 'package:deliveryapp/widgets/storage.dart';
 import 'package:flutter/material.dart';
 
 class CitySelectionPage extends StatefulWidget {
@@ -31,11 +33,13 @@ class _CitySelectionPageState extends State<CitySelectionPage> {
 
   @override
   Widget build(BuildContext context) {
-    final arguments = (ModalRoute.of(context)?.settings.arguments ??
-        <String, dynamic>{}) as Map;
-    setState(() {
-      countrySelected = arguments['countrySelected'];
-    });
+    // final arguments = (ModalRoute.of(context)?.settings.arguments ??
+    //     <String, dynamic>{}) as Map;
+    // setState(() {
+    //   countrySelected = arguments['countrySelected'];
+    // });
+    String tempCountrySelected = SPUtil.read(ConstantsStrings.name);
+    // print(tempCountrySelected);
     return Scaffold(
       backgroundColor: Colors.white,
       appBar: AppBar(
@@ -52,9 +56,12 @@ class _CitySelectionPageState extends State<CitySelectionPage> {
                   fontSize: 18,
                   color: Colors.black),
             ),
-            Text(
-              countrySelected,
-              style: TextStyle(fontSize: 16, color: blueColor),
+            GestureDetector(
+              onTap: () {},
+              child: Text(
+                tempCountrySelected,
+                style: TextStyle(fontSize: 16, color: Colors.red),
+              ),
             ),
           ],
         ),

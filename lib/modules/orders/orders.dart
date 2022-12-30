@@ -121,7 +121,9 @@ class _OrdersState extends State<Orders> {
                     style: TextStyle(fontSize: 17, color: Colors.grey),
                   ),
                   TextButton(
-                    onPressed: () {},
+                    onPressed: () {
+                      Navigator.pushNamed(context, 'registerScreen');
+                    },
                     child: Text(
                       'Sign up',
                       style: TextStyle(

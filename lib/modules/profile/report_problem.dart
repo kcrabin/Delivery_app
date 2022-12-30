@@ -26,7 +26,7 @@ class _ReportProblemState extends State<ReportProblem> {
     if (selectedImages!.isNotEmpty) {
       imageFileList!.addAll(selectedImages);
     }
-    print("Image List Length:" + imageFileList!.length.toString());
+    // print("Image List Length:" + imageFileList!.length.toString());
     setState(() {});
   }
 

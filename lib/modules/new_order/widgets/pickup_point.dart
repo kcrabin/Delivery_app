@@ -13,11 +13,23 @@ class PickupPoint extends StatefulWidget {
 }
 
 class _PickupPointState extends State<PickupPoint> {
+  TextEditingController phoneController = TextEditingController();
+  TextEditingController contactPersonController = TextEditingController();
+  TextEditingController orderNumberController = TextEditingController();
+
   bool cashOnDelivery = false;
 
   bool buyForMe = false;
   bool clickedAdditionalServices = false;
   String locationSelected = '';
+
+  @override
+  void dispose() {
+    phoneController.dispose();
+    contactPersonController.dispose();
+    orderNumberController.dispose();
+    super.dispose();
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -77,12 +89,12 @@ class _PickupPointState extends State<PickupPoint> {
                     children: [
                       GestureDetector(
                         onTap: () async {
-                          print('2 Location view--$locationSelected');
+                          // print('2 Location view--$locationSelected');
                           String location = await Navigator.pushNamed(
                               context, 'addressSelectionScreen', arguments: {
                             'addressPassed': locationSelected
                           }) as String;
-                          print('location in pickup_point $location');
+                          // print('location in pickup_point $location');
                           setState(() {
                             locationSelected = location;
                           });
@@ -166,8 +178,8 @@ class _PickupPointState extends State<PickupPoint> {
                           child: CustomTextfield(
                         hint: 'Phone number',
                         suffixIcon: Icons.person_outline_sharp,
-                        inputAction: TextInputAction.next,
                         inputType: TextInputType.phone,
+                        controller: phoneController,
                       )),
                       widget.scheduleContainerClicked == true
                           ? SizedBox(
@@ -341,14 +353,14 @@ class _PickupPointState extends State<PickupPoint> {
                                     child: CustomTextfield(
                                       hint: 'Contact person',
                                       inputType: TextInputType.name,
-                                      inputAction: TextInputAction.next,
+                                      controller: contactPersonController,
                                     ),
                                   ),
                                   SizedBox(
                                     child: CustomTextfield(
                                       hint: 'Your order number',
                                       inputType: TextInputType.name,
-                                      inputAction: TextInputAction.next,
+                                      controller: orderNumberController,
                                     ),
                                   ),
                                 ],
