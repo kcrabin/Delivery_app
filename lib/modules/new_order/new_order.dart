@@ -19,6 +19,8 @@ class NewOrder extends StatefulWidget {
 }
 
 class _NewOrderState extends State<NewOrder> {
+  final _formKey = GlobalKey<FormState>();
+
   PageController _pageController = PageController();
 
   List<TextEditingController> addressControllers = [];
@@ -35,15 +37,34 @@ class _NewOrderState extends State<NewOrder> {
     addNewDeliveryPoint(0);
   }
 
+  void clearForm() {
+    // for (int i = 0; i < deliveryPoints.length; i++) {
+    // if(i==deliveryPoints[0]){
+
+    // }
+
+    // }
+
+    var info = deliveryPoints[0];
+    deliveryPoints.clear();
+    setState(() {
+      deliveryPoints.add(info);
+    });
+  }
+
   void addNewDeliveryPoint(int index) {
     addressControllers.add(TextEditingController());
     timeControllers.add(TextEditingController());
     phoneControllers.add(TextEditingController());
+    contactPersonControllers.add(TextEditingController());
+    orderNumberControllers.add(TextEditingController());
+
     deliveryPoints.add(DeliveryPoint(
       controllers: [
         addressControllers[index],
         timeControllers[index],
         phoneControllers[index],
+        orderNumberControllers[index],
       ],
       index: index,
       isScheduleClicked: scheduleContainerSelected,
@@ -115,10 +136,12 @@ class _NewOrderState extends State<NewOrder> {
       addressControllers[index].dispose();
       timeControllers[index].dispose();
       phoneControllers[index].dispose();
+      orderNumberControllers[index].dispose();
 
       addressControllers.removeAt(index);
       timeControllers.removeAt(index);
       phoneControllers.removeAt(index);
+      orderNumberControllers.removeAt(index);
     }
   }
 
@@ -152,7 +175,10 @@ class _NewOrderState extends State<NewOrder> {
           ),
           actions: [
             TextButton(
-              onPressed: () {},
+              onPressed: () {
+                _formKey.currentState?.reset();
+                clearForm();
+              },
               child: const Text(
                 'Clear',
                 style: TextStyle(
@@ -170,657 +196,674 @@ class _NewOrderState extends State<NewOrder> {
         ),
         body: SingleChildScrollView(
           physics: AlwaysScrollableScrollPhysics(),
-          child: Column(
-            children: [
-              Padding(
-                padding: const EdgeInsets.all(13),
-                child: Column(
-                  mainAxisAlignment: MainAxisAlignment.start,
-                  crossAxisAlignment: CrossAxisAlignment.start,
-                  children: [
-                    Row(
-                      children: [
-                        Expanded(
-                          child: GestureDetector(
-                            onTap: () {
-                              setState(() {
-                                scheduleContainerSelected = false;
+          child: Form(
+            key: _formKey,
+            child: Column(
+              children: [
+                Padding(
+                  padding: const EdgeInsets.all(13),
+                  child: Column(
+                    mainAxisAlignment: MainAxisAlignment.start,
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: [
+                      Row(
+                        children: [
+                          Expanded(
+                            child: GestureDetector(
+                              onTap: () {
+                                setState(() {
+                                  scheduleContainerSelected = false;
 
-                                for (int i = 0;
-                                    i < deliveryPoints.length;
-                                    i++) {
-                                  deliveryPoints[i] = DeliveryPoint(
-                                    controllers: deliveryPoints[i].controllers,
-                                    index: deliveryPoints[i].index,
-                                    isScheduleClicked: false,
-                                    removePoints:
-                                        deliveryPoints[i].removePoints,
-                                  );
-                                }
+                                  for (int i = 0;
+                                      i < deliveryPoints.length;
+                                      i++) {
+                                    deliveryPoints[i] = DeliveryPoint(
+                                      controllers:
+                                          deliveryPoints[i].controllers,
+                                      index: deliveryPoints[i].index,
+                                      isScheduleClicked: false,
+                                      removePoints:
+                                          deliveryPoints[i].removePoints,
+                                    );
+                                  }
 
-                                deliveryTapCount = deliveryTapCount + 1;
-                                scheduleTapCount = 0;
-                              });
+                                  deliveryTapCount = deliveryTapCount + 1;
+                                  scheduleTapCount = 0;
+                                });
 
-                              if (scheduleContainerSelected == false &&
-                                  deliveryTapCount >= 2) {
-                                showModalBottomSheet(
-                                    isScrollControlled: true,
-                                    shape: const RoundedRectangleBorder(
-                                      borderRadius: BorderRadius.vertical(
-                                        top: Radius.circular(25.0),
-                                      ),
-                                    ),
-                                    context: context,
-                                    builder: (context) {
-                                      return Padding(
-                                        padding: const EdgeInsets.symmetric(
-                                            vertical: 20, horizontal: 20),
-                                        child: Column(
-                                          crossAxisAlignment:
-                                              CrossAxisAlignment.start,
-                                          children: [
-                                            Align(
-                                              alignment: Alignment.centerRight,
-                                              child: GestureDetector(
-                                                onTap: () {
-                                                  Navigator.pop(context);
-                                                },
-                                                child: Icon(Icons.close),
-                                              ),
-                                            ),
-                                            Expanded(
-                                              child: PageView.builder(
-                                                  controller: _pageController,
-                                                  physics:
-                                                      AlwaysScrollableScrollPhysics(),
-                                                  scrollDirection:
-                                                      Axis.horizontal,
-                                                  itemCount: 2,
-                                                  itemBuilder:
-                                                      (context, index) {
-                                                    if (index == 0) {
-                                                      return deliverBottomSheet();
-                                                    } else {
-                                                      return ScheduleBottomSheet();
-                                                    }
-                                                  }),
-                                            ),
-                                            Align(
-                                              alignment: Alignment.center,
-                                              child: SmoothPageIndicator(
-                                                controller: _pageController,
-                                                count: 2,
-                                                effect: ScrollingDotsEffect(
-                                                    activeDotScale: 1,
-                                                    activeDotColor: blueColor,
-                                                    dotColor:
-                                                        Colors.grey.shade300,
-                                                    dotWidth: 10,
-                                                    dotHeight: 10),
-                                                onDotClicked: (index) =>
-                                                    _pageController
-                                                        .animateToPage(index,
-                                                            duration: Duration(
-                                                                milliseconds:
-                                                                    500),
-                                                            curve: Curves.ease),
-                                              ),
-                                            ),
-                                            SizedBox(
-                                              height: 20,
-                                            ),
-                                            ElevatedButton(
-                                              child: Text('Confirm',
-                                                  style: TextStyle(
-                                                      fontSize: 22,
-                                                      color: Colors.white)),
-                                              style: ElevatedButton.styleFrom(
-                                                  elevation: 0,
-                                                  backgroundColor: blueColor,
-                                                  shape:
-                                                      const RoundedRectangleBorder(
-                                                    borderRadius:
-                                                        BorderRadius.all(
-                                                      Radius.circular(25),
-                                                    ),
-                                                  ),
-                                                  minimumSize: Size(
-                                                      double.infinity, 50)),
-                                              onPressed: () {},
-                                            ),
-                                          ],
+                                if (scheduleContainerSelected == false &&
+                                    deliveryTapCount >= 2) {
+                                  showModalBottomSheet(
+                                      isScrollControlled: true,
+                                      shape: const RoundedRectangleBorder(
+                                        borderRadius: BorderRadius.vertical(
+                                          top: Radius.circular(25.0),
                                         ),
-                                      );
-                                    });
-                              }
-                            },
-                            child: TopContainerButton(
-                              iconName: Icons.timer,
-                              borderRadiusColor:
-                                  scheduleContainerSelected == true
-                                      ? Border.all(
-                                          color: Colors.grey.shade300,
-                                          width: 1.5)
-                                      : Border.all(
-                                          color: Colors.grey.shade200,
-                                          width: 1.5),
-                              circleAvatarColor:
-                                  scheduleContainerSelected == true
-                                      ? Colors.grey.shade200
-                                      : Colors.white,
-                              containerColor: scheduleContainerSelected == true
-                                  ? Colors.white
-                                  : Colors.grey.shade200,
-                              containerName: 'Deliver Now',
-                              iconColor: scheduleContainerSelected == true
-                                  ? Colors.grey
-                                  : blueColor,
-                            ),
-                          ),
-                        ),
-                        const SizedBox(
-                          width: 5,
-                        ),
-                        Expanded(
-                          child: GestureDetector(
-                            onTap: () {
-                              setState(() {
-                                // deliveryContainerSelected = false;
-                                scheduleContainerSelected = true;
-
-                                for (int i = 0;
-                                    i < deliveryPoints.length;
-                                    i++) {
-                                  deliveryPoints[i] = DeliveryPoint(
-                                    controllers: deliveryPoints[i].controllers,
-                                    index: deliveryPoints[i].index,
-                                    isScheduleClicked: true,
-                                    removePoints:
-                                        deliveryPoints[i].removePoints,
-                                  );
-                                }
-
-                                scheduleTapCount = scheduleTapCount + 1;
-                                deliveryTapCount = 0;
-                              });
-                              if (scheduleContainerSelected == true &&
-                                  scheduleTapCount >= 2) {
-                                showModalBottomSheet(
-                                    isScrollControlled: true,
-                                    shape: const RoundedRectangleBorder(
-                                      borderRadius: BorderRadius.vertical(
-                                        top: Radius.circular(25.0),
                                       ),
-                                    ),
-                                    context: context,
-                                    builder: (context) {
-                                      return Padding(
-                                        padding: const EdgeInsets.symmetric(
-                                            vertical: 20, horizontal: 20),
-                                        child: Column(
-                                          crossAxisAlignment:
-                                              CrossAxisAlignment.start,
-                                          children: [
-                                            Align(
+                                      context: context,
+                                      builder: (context) {
+                                        return Padding(
+                                          padding: const EdgeInsets.symmetric(
+                                              vertical: 20, horizontal: 20),
+                                          child: Column(
+                                            crossAxisAlignment:
+                                                CrossAxisAlignment.start,
+                                            children: [
+                                              Align(
                                                 alignment:
                                                     Alignment.centerRight,
                                                 child: GestureDetector(
-                                                    onTap: () {
-                                                      Navigator.pop(context);
-                                                    },
-                                                    child: Icon(Icons.close))),
-                                            Expanded(
-                                              child: PageView.builder(
-                                                  controller: _pageController,
-                                                  physics:
-                                                      AlwaysScrollableScrollPhysics(),
-                                                  scrollDirection:
-                                                      Axis.horizontal,
-                                                  itemCount: 2,
-                                                  itemBuilder:
-                                                      (context, index) {
-                                                    if (index == 0) {
-                                                      return ScheduleBottomSheet();
-                                                    } else {
-                                                      return deliverBottomSheet();
-                                                    }
-                                                  }),
-                                            ),
-                                            Align(
-                                              alignment: Alignment.center,
-                                              child: SmoothPageIndicator(
-                                                controller: _pageController,
-                                                count: 2,
-                                                effect: ScrollingDotsEffect(
-                                                    activeDotScale: 1,
-                                                    activeDotColor: blueColor,
-                                                    dotColor:
-                                                        Colors.grey.shade300,
-                                                    dotWidth: 10,
-                                                    dotHeight: 10),
-                                                onDotClicked: (index) =>
-                                                    _pageController
-                                                        .animateToPage(index,
-                                                            duration: Duration(
-                                                                milliseconds:
-                                                                    500),
-                                                            curve: Curves.ease),
+                                                  onTap: () {
+                                                    Navigator.pop(context);
+                                                  },
+                                                  child: Icon(Icons.close),
+                                                ),
                                               ),
-                                            ),
-                                            SizedBox(
-                                              height: 20,
-                                            ),
-                                            ElevatedButton(
-                                              child: Text('Confirm',
-                                                  style: TextStyle(
-                                                      fontSize: 22,
-                                                      color: Colors.white)),
-                                              style: ElevatedButton.styleFrom(
-                                                  elevation: 0,
-                                                  backgroundColor: blueColor,
-                                                  shape:
-                                                      const RoundedRectangleBorder(
-                                                    borderRadius:
-                                                        BorderRadius.all(
-                                                      Radius.circular(25),
+                                              Expanded(
+                                                child: PageView.builder(
+                                                    controller: _pageController,
+                                                    physics:
+                                                        AlwaysScrollableScrollPhysics(),
+                                                    scrollDirection:
+                                                        Axis.horizontal,
+                                                    itemCount: 2,
+                                                    itemBuilder:
+                                                        (context, index) {
+                                                      if (index == 0) {
+                                                        return deliverBottomSheet();
+                                                      } else {
+                                                        return ScheduleBottomSheet();
+                                                      }
+                                                    }),
+                                              ),
+                                              Align(
+                                                alignment: Alignment.center,
+                                                child: SmoothPageIndicator(
+                                                  controller: _pageController,
+                                                  count: 2,
+                                                  effect: ScrollingDotsEffect(
+                                                      activeDotScale: 1,
+                                                      activeDotColor: blueColor,
+                                                      dotColor:
+                                                          Colors.grey.shade300,
+                                                      dotWidth: 10,
+                                                      dotHeight: 10),
+                                                  onDotClicked: (index) =>
+                                                      _pageController
+                                                          .animateToPage(index,
+                                                              duration: Duration(
+                                                                  milliseconds:
+                                                                      500),
+                                                              curve:
+                                                                  Curves.ease),
+                                                ),
+                                              ),
+                                              SizedBox(
+                                                height: 20,
+                                              ),
+                                              ElevatedButton(
+                                                child: Text('Confirm',
+                                                    style: TextStyle(
+                                                        fontSize: 22,
+                                                        color: Colors.white)),
+                                                style: ElevatedButton.styleFrom(
+                                                    elevation: 0,
+                                                    backgroundColor: blueColor,
+                                                    shape:
+                                                        const RoundedRectangleBorder(
+                                                      borderRadius:
+                                                          BorderRadius.all(
+                                                        Radius.circular(25),
+                                                      ),
                                                     ),
-                                                  ),
-                                                  minimumSize: Size(
-                                                      double.infinity, 50)),
-                                              onPressed: () {},
-                                            ),
-                                          ],
-                                        ),
-                                      );
-                                    });
-                              }
-                            },
-                            child: TopContainerButton(
-                              iconName: Icons.calendar_month_outlined,
-                              borderRadiusColor:
-                                  scheduleContainerSelected == false
-                                      ? Border.all(
-                                          color: Colors.grey.shade300,
-                                          width: 1.5)
-                                      : Border.all(
-                                          color: Colors.grey.shade200,
-                                          width: 1.5),
-                              circleAvatarColor:
-                                  scheduleContainerSelected == false
-                                      ? Colors.grey.shade200
-                                      : Colors.white,
-                              containerColor: scheduleContainerSelected == false
-                                  ? Colors.white
-                                  : Colors.grey.shade200,
-                              containerName: 'Schedule',
-                              iconColor: scheduleContainerSelected == false
-                                  ? Colors.grey
-                                  : blueColor,
-                            ),
-                          ),
-                        )
-                      ],
-                    ),
-                    const SizedBox(
-                      height: 10,
-                    ),
-                    scheduleContainerSelected == false
-                        ? Text(
-                            'We will assign the nearest courier to pick-up and deliver as soon as possible.',
-                            style: TextStyle(fontSize: 17, color: Colors.grey),
-                          )
-                        : Text(
-                            'We will arrive at each address at specified times.',
-                            style: TextStyle(fontSize: 17, color: Colors.grey),
-                          ),
-                    // const Text(
-                    //   'and deliver as soon as possible.',
-                    //   style: TextStyle(fontSize: 15, color: Colors.grey),
-                    // ),
-                    const SizedBox(
-                      height: 15,
-                    ),
-                    Row(
-                      children: [
-                        Expanded(
-                          child: InkWell(
-                            onTap: () {
-                              showModalBottomSheet(
-                                  shape: const RoundedRectangleBorder(
-                                    borderRadius: BorderRadius.vertical(
-                                      top: Radius.circular(25.0),
-                                    ),
-                                  ),
-                                  isDismissible: true,
-                                  context: context,
-                                  builder: (context) {
-                                    return Padding(
-                                      padding: const EdgeInsets.symmetric(
-                                          vertical: 20, horizontal: 20),
-                                      child: Wrap(
-                                        runSpacing: 20,
-                                        // crossAxisAlignment:
-                                        //     CrossAxisAlignment.start,
-                                        children: [
-                                          Text(
-                                            'Delivery options',
-                                            style: TextStyle(
-                                                fontSize: 22,
-                                                fontWeight: FontWeight.bold),
+                                                    minimumSize: Size(
+                                                        double.infinity, 50)),
+                                                onPressed: () {},
+                                              ),
+                                            ],
                                           ),
-                                          ListTile(
-                                            contentPadding: EdgeInsets.zero,
-                                            title: Text(
-                                              'Book a Courier',
-                                              style: TextStyle(fontSize: 18),
-                                            ),
-                                            subtitle: Text(
-                                              'Hyperlocal is km based tariff. It is the best option for short distance deliveries under 5 km.',
-                                              style: TextStyle(
-                                                  fontSize: 17,
-                                                  color: Colors.grey),
-                                            ),
-                                            trailing: Icon(
-                                              Icons.done,
-                                              color: blueColor,
-                                            ),
-                                          )
-                                        ],
-                                      ),
-                                    );
-                                  });
-                            },
-                            child: Container(
-                              padding: EdgeInsets.all(7),
-                              decoration: BoxDecoration(
-                                  borderRadius: BorderRadius.circular(12),
-                                  color: Colors.grey[200]),
-                              child: Row(
-                                mainAxisAlignment:
-                                    MainAxisAlignment.spaceAround,
-                                children: [
-                                  const Text(
-                                    'Book a Courier',
-                                    style: TextStyle(
-                                      fontSize: 20,
-                                    ),
-                                  ),
-                                  Icon(
-                                    Icons.expand_more,
-                                    color: Colors.grey,
-                                  ),
-                                ],
+                                        );
+                                      });
+                                }
+                              },
+                              child: TopContainerButton(
+                                iconName: Icons.timer,
+                                borderRadiusColor:
+                                    scheduleContainerSelected == true
+                                        ? Border.all(
+                                            color: Colors.grey.shade300,
+                                            width: 1.5)
+                                        : Border.all(
+                                            color: Colors.grey.shade200,
+                                            width: 1.5),
+                                circleAvatarColor:
+                                    scheduleContainerSelected == true
+                                        ? Colors.grey.shade200
+                                        : Colors.white,
+                                containerColor:
+                                    scheduleContainerSelected == true
+                                        ? Colors.white
+                                        : Colors.grey.shade200,
+                                containerName: 'Deliver Now',
+                                iconColor: scheduleContainerSelected == true
+                                    ? Colors.grey
+                                    : blueColor,
                               ),
                             ),
                           ),
-                        ),
-                        const SizedBox(
-                          width: 5,
-                        ),
-                        Expanded(
-                          child: InkWell(
-                            onTap: () {
-                              showModalBottomSheet(
-                                  shape: const RoundedRectangleBorder(
-                                    borderRadius: BorderRadius.vertical(
-                                      top: Radius.circular(25.0),
+                          const SizedBox(
+                            width: 5,
+                          ),
+                          Expanded(
+                            child: GestureDetector(
+                              onTap: () {
+                                setState(() {
+                                  // deliveryContainerSelected = false;
+                                  scheduleContainerSelected = true;
+
+                                  for (int i = 0;
+                                      i < deliveryPoints.length;
+                                      i++) {
+                                    deliveryPoints[i] = DeliveryPoint(
+                                      controllers:
+                                          deliveryPoints[i].controllers,
+                                      index: deliveryPoints[i].index,
+                                      isScheduleClicked: true,
+                                      removePoints:
+                                          deliveryPoints[i].removePoints,
+                                    );
+                                  }
+
+                                  scheduleTapCount = scheduleTapCount + 1;
+                                  deliveryTapCount = 0;
+                                });
+                                if (scheduleContainerSelected == true &&
+                                    scheduleTapCount >= 2) {
+                                  showModalBottomSheet(
+                                      isScrollControlled: true,
+                                      shape: const RoundedRectangleBorder(
+                                        borderRadius: BorderRadius.vertical(
+                                          top: Radius.circular(25.0),
+                                        ),
+                                      ),
+                                      context: context,
+                                      builder: (context) {
+                                        return Padding(
+                                          padding: const EdgeInsets.symmetric(
+                                              vertical: 20, horizontal: 20),
+                                          child: Column(
+                                            crossAxisAlignment:
+                                                CrossAxisAlignment.start,
+                                            children: [
+                                              Align(
+                                                  alignment:
+                                                      Alignment.centerRight,
+                                                  child: GestureDetector(
+                                                      onTap: () {
+                                                        Navigator.pop(context);
+                                                      },
+                                                      child:
+                                                          Icon(Icons.close))),
+                                              Expanded(
+                                                child: PageView.builder(
+                                                    controller: _pageController,
+                                                    physics:
+                                                        AlwaysScrollableScrollPhysics(),
+                                                    scrollDirection:
+                                                        Axis.horizontal,
+                                                    itemCount: 2,
+                                                    itemBuilder:
+                                                        (context, index) {
+                                                      if (index == 0) {
+                                                        return ScheduleBottomSheet();
+                                                      } else {
+                                                        return deliverBottomSheet();
+                                                      }
+                                                    }),
+                                              ),
+                                              Align(
+                                                alignment: Alignment.center,
+                                                child: SmoothPageIndicator(
+                                                  controller: _pageController,
+                                                  count: 2,
+                                                  effect: ScrollingDotsEffect(
+                                                      activeDotScale: 1,
+                                                      activeDotColor: blueColor,
+                                                      dotColor:
+                                                          Colors.grey.shade300,
+                                                      dotWidth: 10,
+                                                      dotHeight: 10),
+                                                  onDotClicked: (index) =>
+                                                      _pageController
+                                                          .animateToPage(index,
+                                                              duration: Duration(
+                                                                  milliseconds:
+                                                                      500),
+                                                              curve:
+                                                                  Curves.ease),
+                                                ),
+                                              ),
+                                              SizedBox(
+                                                height: 20,
+                                              ),
+                                              ElevatedButton(
+                                                child: Text('Confirm',
+                                                    style: TextStyle(
+                                                        fontSize: 22,
+                                                        color: Colors.white)),
+                                                style: ElevatedButton.styleFrom(
+                                                    elevation: 0,
+                                                    backgroundColor: blueColor,
+                                                    shape:
+                                                        const RoundedRectangleBorder(
+                                                      borderRadius:
+                                                          BorderRadius.all(
+                                                        Radius.circular(25),
+                                                      ),
+                                                    ),
+                                                    minimumSize: Size(
+                                                        double.infinity, 50)),
+                                                onPressed: () {},
+                                              ),
+                                            ],
+                                          ),
+                                        );
+                                      });
+                                }
+                              },
+                              child: TopContainerButton(
+                                iconName: Icons.calendar_month_outlined,
+                                borderRadiusColor:
+                                    scheduleContainerSelected == false
+                                        ? Border.all(
+                                            color: Colors.grey.shade300,
+                                            width: 1.5)
+                                        : Border.all(
+                                            color: Colors.grey.shade200,
+                                            width: 1.5),
+                                circleAvatarColor:
+                                    scheduleContainerSelected == false
+                                        ? Colors.grey.shade200
+                                        : Colors.white,
+                                containerColor:
+                                    scheduleContainerSelected == false
+                                        ? Colors.white
+                                        : Colors.grey.shade200,
+                                containerName: 'Schedule',
+                                iconColor: scheduleContainerSelected == false
+                                    ? Colors.grey
+                                    : blueColor,
+                              ),
+                            ),
+                          )
+                        ],
+                      ),
+                      const SizedBox(
+                        height: 10,
+                      ),
+                      scheduleContainerSelected == false
+                          ? Text(
+                              'We will assign the nearest courier to pick-up and deliver as soon as possible.',
+                              style:
+                                  TextStyle(fontSize: 17, color: Colors.grey),
+                            )
+                          : Text(
+                              'We will arrive at each address at specified times.',
+                              style:
+                                  TextStyle(fontSize: 17, color: Colors.grey),
+                            ),
+                      // const Text(
+                      //   'and deliver as soon as possible.',
+                      //   style: TextStyle(fontSize: 15, color: Colors.grey),
+                      // ),
+                      const SizedBox(
+                        height: 15,
+                      ),
+                      Row(
+                        children: [
+                          Expanded(
+                            child: InkWell(
+                              onTap: () {
+                                showModalBottomSheet(
+                                    shape: const RoundedRectangleBorder(
+                                      borderRadius: BorderRadius.vertical(
+                                        top: Radius.circular(25.0),
+                                      ),
                                     ),
-                                  ),
-                                  context: context,
-                                  builder: (context) {
-                                    return StatefulBuilder(
-                                        builder: (context, setModalState) {
+                                    isDismissible: true,
+                                    context: context,
+                                    builder: (context) {
                                       return Padding(
                                         padding: const EdgeInsets.symmetric(
                                             vertical: 20, horizontal: 20),
                                         child: Wrap(
                                           runSpacing: 20,
+                                          // crossAxisAlignment:
+                                          //     CrossAxisAlignment.start,
                                           children: [
                                             Text(
-                                              'Parcel weight',
+                                              'Delivery options',
                                               style: TextStyle(
                                                   fontSize: 22,
                                                   fontWeight: FontWeight.bold),
                                             ),
-                                            ListView.builder(
-                                                shrinkWrap: true,
-                                                itemCount: parcelWeights.length,
-                                                itemBuilder: (context, index) {
-                                                  return Padding(
-                                                    padding:
-                                                        const EdgeInsets.all(
-                                                            8.0),
-                                                    child: GestureDetector(
-                                                      onTap: () {
-                                                        setModalState(() {
-                                                          deliveryItemWeight =
-                                                              parcelWeights[
-                                                                  index];
-                                                        });
-                                                        setState(() {
-                                                          deliveryItemWeight =
-                                                              parcelWeights[
-                                                                  index];
-                                                        });
-                                                        Navigator.pop(context);
-                                                      },
-                                                      child: Row(
-                                                        mainAxisAlignment:
-                                                            MainAxisAlignment
-                                                                .spaceBetween,
-                                                        children: [
-                                                          Text(
-                                                            parcelWeights[
-                                                                index],
-                                                            style: TextStyle(
-                                                                fontSize: 18),
-                                                          ),
-                                                          deliveryItemWeight ==
-                                                                  parcelWeights[
-                                                                      index]
-                                                              ? Icon(
-                                                                  Icons.done,
-                                                                  color:
-                                                                      blueColor,
-                                                                )
-                                                              : SizedBox(),
-                                                        ],
-                                                      ),
-                                                    ),
-                                                  );
-                                                }),
+                                            ListTile(
+                                              contentPadding: EdgeInsets.zero,
+                                              title: Text(
+                                                'Book a Courier',
+                                                style: TextStyle(fontSize: 18),
+                                              ),
+                                              subtitle: Text(
+                                                'Hyperlocal is km based tariff. It is the best option for short distance deliveries under 5 km.',
+                                                style: TextStyle(
+                                                    fontSize: 17,
+                                                    color: Colors.grey),
+                                              ),
+                                              trailing: Icon(
+                                                Icons.done,
+                                                color: blueColor,
+                                              ),
+                                            )
                                           ],
                                         ),
                                       );
                                     });
-                                  });
-                            },
-                            child: Container(
-                              padding: EdgeInsets.all(7),
-                              decoration: BoxDecoration(
-                                  borderRadius: BorderRadius.circular(12),
-                                  color: Colors.grey[200]),
-                              child: Row(
-                                mainAxisAlignment:
-                                    MainAxisAlignment.spaceAround,
-                                children: [
-                                  Text(
-                                    deliveryItemWeight,
-                                    style: TextStyle(
-                                      fontSize: 20,
+                              },
+                              child: Container(
+                                padding: EdgeInsets.all(7),
+                                decoration: BoxDecoration(
+                                    borderRadius: BorderRadius.circular(12),
+                                    color: Colors.grey[200]),
+                                child: Row(
+                                  mainAxisAlignment:
+                                      MainAxisAlignment.spaceAround,
+                                  children: [
+                                    const Text(
+                                      'Book a Courier',
+                                      style: TextStyle(
+                                        fontSize: 20,
+                                      ),
                                     ),
-                                  ),
-                                  Icon(
-                                    Icons.expand_more,
-                                    color: Colors.grey,
-                                  ),
-                                ],
+                                    Icon(
+                                      Icons.expand_more,
+                                      color: Colors.grey,
+                                    ),
+                                  ],
+                                ),
                               ),
                             ),
                           ),
-                        ),
-                      ],
-                    ),
-                    const SizedBox(
-                      height: 10,
-                    ),
-                    const Text(
-                      'Hyperlocal is km based tariff. It is the best Option for short distance deliveries under 5 km.',
-                      style: TextStyle(fontSize: 17, color: Colors.grey),
-                    ),
-
-                    const SizedBox(
-                      height: 15,
-                    ),
-
-                    PickupPoint(
-                        scheduleContainerClicked: scheduleContainerSelected),
-                    SizedBox(
-                      height: 20,
-                    ),
-                    ListView.builder(
-                        physics: NeverScrollableScrollPhysics(),
-                        shrinkWrap: true,
-                        itemCount: deliveryPoints.length,
-                        itemBuilder: ((context, index) {
-                          // print("this is inside listview $index");
-                          return deliveryPoints[index];
-                        })),
-
-                    // const SizedBox(
-                    //   height: 15,
-                    // ),
-                    SizedBox(
-                      height: 10,
-                    ),
-                    InkWell(
-                      onTap: () {
-                        addNewDeliveryPoint(deliveryPoints.length);
-                        // print(currentIndex);
-                      },
-                      child: Container(
-                        padding: EdgeInsets.fromLTRB(20, 10, 10, 10),
-                        decoration: BoxDecoration(
-                          color: Colors.grey[200],
-                          borderRadius: BorderRadius.circular(10),
-                        ),
-                        child: Row(
-                          children: [
-                            Icon(
-                              Icons.add,
-                              size: 25,
+                          const SizedBox(
+                            width: 5,
+                          ),
+                          Expanded(
+                            child: InkWell(
+                              onTap: () {
+                                showModalBottomSheet(
+                                    shape: const RoundedRectangleBorder(
+                                      borderRadius: BorderRadius.vertical(
+                                        top: Radius.circular(25.0),
+                                      ),
+                                    ),
+                                    context: context,
+                                    builder: (context) {
+                                      return StatefulBuilder(
+                                          builder: (context, setModalState) {
+                                        return Padding(
+                                          padding: const EdgeInsets.symmetric(
+                                              vertical: 20, horizontal: 20),
+                                          child: Wrap(
+                                            runSpacing: 20,
+                                            children: [
+                                              Text(
+                                                'Parcel weight',
+                                                style: TextStyle(
+                                                    fontSize: 22,
+                                                    fontWeight:
+                                                        FontWeight.bold),
+                                              ),
+                                              ListView.builder(
+                                                  shrinkWrap: true,
+                                                  itemCount:
+                                                      parcelWeights.length,
+                                                  itemBuilder:
+                                                      (context, index) {
+                                                    return Padding(
+                                                      padding:
+                                                          const EdgeInsets.all(
+                                                              8.0),
+                                                      child: GestureDetector(
+                                                        onTap: () {
+                                                          setModalState(() {
+                                                            deliveryItemWeight =
+                                                                parcelWeights[
+                                                                    index];
+                                                          });
+                                                          setState(() {
+                                                            deliveryItemWeight =
+                                                                parcelWeights[
+                                                                    index];
+                                                          });
+                                                          Navigator.pop(
+                                                              context);
+                                                        },
+                                                        child: Row(
+                                                          mainAxisAlignment:
+                                                              MainAxisAlignment
+                                                                  .spaceBetween,
+                                                          children: [
+                                                            Text(
+                                                              parcelWeights[
+                                                                  index],
+                                                              style: TextStyle(
+                                                                  fontSize: 18),
+                                                            ),
+                                                            deliveryItemWeight ==
+                                                                    parcelWeights[
+                                                                        index]
+                                                                ? Icon(
+                                                                    Icons.done,
+                                                                    color:
+                                                                        blueColor,
+                                                                  )
+                                                                : SizedBox(),
+                                                          ],
+                                                        ),
+                                                      ),
+                                                    );
+                                                  }),
+                                            ],
+                                          ),
+                                        );
+                                      });
+                                    });
+                              },
+                              child: Container(
+                                padding: EdgeInsets.all(7),
+                                decoration: BoxDecoration(
+                                    borderRadius: BorderRadius.circular(12),
+                                    color: Colors.grey[200]),
+                                child: Row(
+                                  mainAxisAlignment:
+                                      MainAxisAlignment.spaceAround,
+                                  children: [
+                                    Text(
+                                      deliveryItemWeight,
+                                      style: TextStyle(
+                                        fontSize: 20,
+                                      ),
+                                    ),
+                                    Icon(
+                                      Icons.expand_more,
+                                      color: Colors.grey,
+                                    ),
+                                  ],
+                                ),
+                              ),
                             ),
-                            SizedBox(
-                              width: 10,
-                            ),
-                            Text(
-                              'Add Delivery Point',
-                              style: TextStyle(
-                                  fontSize: 20, fontWeight: FontWeight.w500),
-                            ),
-                          ],
+                          ),
+                        ],
+                      ),
+                      const SizedBox(
+                        height: 10,
+                      ),
+                      const Text(
+                        'Hyperlocal is km based tariff. It is the best Option for short distance deliveries under 5 km.',
+                        style: TextStyle(fontSize: 17, color: Colors.grey),
+                      ),
+
+                      const SizedBox(
+                        height: 15,
+                      ),
+
+                      PickupPoint(
+                          scheduleContainerClicked: scheduleContainerSelected),
+                      SizedBox(
+                        height: 20,
+                      ),
+                      ListView.builder(
+                          physics: NeverScrollableScrollPhysics(),
+                          shrinkWrap: true,
+                          itemCount: deliveryPoints.length,
+                          itemBuilder: ((context, index) {
+                            // print("this is inside listview $index");
+                            return deliveryPoints[index];
+                          })),
+
+                      // const SizedBox(
+                      //   height: 15,
+                      // ),
+                      SizedBox(
+                        height: 10,
+                      ),
+                      InkWell(
+                        onTap: () {
+                          addNewDeliveryPoint(deliveryPoints.length);
+                          // print(currentIndex);
+                        },
+                        child: Container(
+                          padding: EdgeInsets.fromLTRB(20, 10, 10, 10),
+                          decoration: BoxDecoration(
+                            color: Colors.grey[200],
+                            borderRadius: BorderRadius.circular(10),
+                          ),
+                          child: Row(
+                            children: [
+                              Icon(
+                                Icons.add,
+                                size: 25,
+                              ),
+                              SizedBox(
+                                width: 10,
+                              ),
+                              Text(
+                                'Add Delivery Point',
+                                style: TextStyle(
+                                    fontSize: 20, fontWeight: FontWeight.w500),
+                              ),
+                            ],
+                          ),
                         ),
                       ),
-                    ),
 
-                    SizedBox(
-                      height: 10,
-                    ),
-                    CustomToogle(
-                        text: 'Optimize the route',
-                        val: optimizeRoute,
-                        onchangedMethod: optimizeRouteToggle),
-                    SizedBox(
-                      child: Divider(
-                        color: Colors.grey.shade300,
-                        // indent: 15,
-                        thickness: 1,
+                      SizedBox(
+                        height: 10,
                       ),
-                    ),
+                      CustomToogle(
+                          text: 'Optimize the route',
+                          val: optimizeRoute,
+                          onchangedMethod: optimizeRouteToggle),
+                      SizedBox(
+                        child: Divider(
+                          color: Colors.grey.shade300,
+                          // indent: 15,
+                          thickness: 1,
+                        ),
+                      ),
 
-                    const Text(
-                      'Our algorithm will optimize the route points, ensuring the route is more convenient for the courier and cheaper for you. Use if particular sequence of route points does not matter.',
-                      style: TextStyle(fontSize: 17, color: Colors.grey),
-                    ),
-                  ],
-                ),
-              ),
-              SizedBox(
-                child: Divider(
-                  color: Colors.grey.shade200,
-                  thickness: 15,
-                ),
-              ),
-              // SizedBox(
-              //   height: 15,
-              // ),
-              PackageContainer(),
-              SizedBox(
-                child: Divider(
-                  color: Colors.grey.shade200,
-                  thickness: 15,
-                ),
-              ),
-              Padding(
-                padding: const EdgeInsets.all(12),
-                child: Column(
-                  crossAxisAlignment: CrossAxisAlignment.start,
-                  children: [
-                    Text(
-                      'Additional Services',
-                      style: TextStyle(
-                          fontWeight: FontWeight.bold,
-                          color: Colors.black,
-                          fontSize: 22),
-                    ),
-                    SizedBox(
-                      height: 10,
-                    ),
-                    CustomToogle(
-                        text: 'Prefer Courier with Delivery bag',
-                        val: preferDeliveryBag,
-                        onchangedMethod: deliveryBagToggle),
-                    SizedBox(
-                      height: 5,
-                    ),
-                    SizedBox(
-                      child: Divider(
-                        color: Colors.grey.shade300,
-                        thickness: 1,
+                      const Text(
+                        'Our algorithm will optimize the route points, ensuring the route is more convenient for the courier and cheaper for you. Use if particular sequence of route points does not matter.',
+                        style: TextStyle(fontSize: 17, color: Colors.grey),
                       ),
-                    ),
-                    SizedBox(
-                      height: 5,
-                    ),
-                    CustomToogle(
-                        text: 'Notify recipients by SMS',
-                        val: notifyBySMS,
-                        onchangedMethod: notifyBySMSToggle),
-                  ],
+                    ],
+                  ),
                 ),
-              ),
-              SizedBox(
-                child: Divider(
-                  color: Colors.grey.shade200,
-                  thickness: 15,
+                SizedBox(
+                  child: Divider(
+                    color: Colors.grey.shade200,
+                    thickness: 15,
+                  ),
                 ),
-              ),
-              PaymentContainer(),
-              SizedBox(
-                height: 50,
-              )
-            ],
+                // SizedBox(
+                //   height: 15,
+                // ),
+                PackageContainer(),
+                SizedBox(
+                  child: Divider(
+                    color: Colors.grey.shade200,
+                    thickness: 15,
+                  ),
+                ),
+                Padding(
+                  padding: const EdgeInsets.all(12),
+                  child: Column(
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: [
+                      Text(
+                        'Additional Services',
+                        style: TextStyle(
+                            fontWeight: FontWeight.bold,
+                            color: Colors.black,
+                            fontSize: 22),
+                      ),
+                      SizedBox(
+                        height: 10,
+                      ),
+                      CustomToogle(
+                          text: 'Prefer Courier with Delivery bag',
+                          val: preferDeliveryBag,
+                          onchangedMethod: deliveryBagToggle),
+                      SizedBox(
+                        height: 5,
+                      ),
+                      SizedBox(
+                        child: Divider(
+                          color: Colors.grey.shade300,
+                          thickness: 1,
+                        ),
+                      ),
+                      SizedBox(
+                        height: 5,
+                      ),
+                      CustomToogle(
+                          text: 'Notify recipients by SMS',
+                          val: notifyBySMS,
+                          onchangedMethod: notifyBySMSToggle),
+                    ],
+                  ),
+                ),
+                SizedBox(
+                  child: Divider(
+                    color: Colors.grey.shade200,
+                    thickness: 15,
+                  ),
+                ),
+                PaymentContainer(),
+                SizedBox(
+                  height: 50,
+                )
+              ],
+            ),
           ),
         ),
-        bottomNavigationBar: BottomAppBar(
-          elevation: 5,
-          child: Padding(
-            padding: const EdgeInsets.fromLTRB(12, 10, 12, 10),
-            child: Row(
-              mainAxisAlignment: MainAxisAlignment.spaceBetween,
-              children: [
-                Row(
+        bottomSheet: Padding(
+          padding: const EdgeInsets.fromLTRB(12, 10, 12, 10),
+          child: Row(
+            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+            children: [
+              GestureDetector(
+                onTap: () {},
+                child: Row(
                   children: [
                     const Text(
                       '₹ ',
@@ -831,30 +874,63 @@ class _NewOrderState extends State<NewOrder> {
                       style: TextStyle(fontSize: 22),
                     ),
                     IconButton(
-                        onPressed: () {},
+                        onPressed: () {
+                          showModalBottomSheet(
+                              shape: const RoundedRectangleBorder(
+                                borderRadius: BorderRadius.vertical(
+                                  top: Radius.circular(25.0),
+                                ),
+                              ),
+                              useRootNavigator: false,
+                              context: context,
+                              builder: (context) {
+                                return Padding(
+                                  padding: const EdgeInsets.symmetric(
+                                      vertical: 30, horizontal: 15),
+                                  child: Wrap(
+                                    children: [
+                                      Row(
+                                        mainAxisAlignment:
+                                            MainAxisAlignment.spaceBetween,
+                                        children: [
+                                          Text(
+                                            'Delivery Fee',
+                                            style: TextStyle(fontSize: 18),
+                                          ),
+                                          Text(
+                                            '₹ 45',
+                                            style: TextStyle(fontSize: 18),
+                                          )
+                                        ],
+                                      ),
+                                    ],
+                                  ),
+                                );
+                              });
+                        },
                         icon: const Icon(
                           Icons.expand_more,
                           color: Colors.grey,
                         ))
                   ],
                 ),
-                ElevatedButton(
-                  child: Text('Create order',
-                      style: TextStyle(fontSize: 22, color: Colors.white)),
-                  style: ElevatedButton.styleFrom(
-                      elevation: 0,
-                      backgroundColor: blueColor,
-                      shape: const RoundedRectangleBorder(
-                        borderRadius: BorderRadius.all(
-                          Radius.circular(25),
-                        ),
+              ),
+              ElevatedButton(
+                child: Text('Create order',
+                    style: TextStyle(fontSize: 22, color: Colors.white)),
+                style: ElevatedButton.styleFrom(
+                    elevation: 0,
+                    backgroundColor: blueColor,
+                    shape: const RoundedRectangleBorder(
+                      borderRadius: BorderRadius.all(
+                        Radius.circular(25),
                       ),
-                      minimumSize:
-                          Size(MediaQuery.of(context).size.width / 2.5, 50)),
-                  onPressed: () {},
-                ),
-              ],
-            ),
+                    ),
+                    minimumSize:
+                        Size(MediaQuery.of(context).size.width / 2.5, 50)),
+                onPressed: () {},
+              ),
+            ],
           ),
         ),
       ),

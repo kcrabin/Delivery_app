@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 
 import '../constants.dart';
 
@@ -13,8 +14,22 @@ class NationalitySelectionPage extends StatefulWidget {
 class _NationalitySelectionPageState extends State<NationalitySelectionPage> {
   String country = '🇳🇵 Nepal';
 
+  void getDataFromSharedpref() async {
+    final SharedPreferences pref = await SharedPreferences.getInstance();
+    print('this id shared pref ---${pref.getString('country')}');
+    setState(() {
+      if (pref.getString('country') != '' ||
+          pref.getString('country') != null) {
+        country = pref.getString('country') ?? '🇳🇵 Nepal';
+      } else {
+        country = '🇳🇵 Nepal';
+      }
+    });
+  }
+
   @override
   Widget build(BuildContext context) {
+    getDataFromSharedpref();
     return Scaffold(
       body: Padding(
         padding: const EdgeInsets.symmetric(vertical: 20, horizontal: 15),
@@ -39,14 +54,11 @@ class _NationalitySelectionPageState extends State<NationalitySelectionPage> {
             Row(
               children: [
                 InkWell(
-                  onTap: () async {
-                    String countrySelected = await Navigator.pushNamed(
-                            context, 'countryListScreen',
-                            arguments: {'previouslySelectedCountry': country})
-                        as String;
-                    setState(() {
-                      country = countrySelected;
-                    });
+                  onTap: () {
+                    Navigator.pushNamed(
+                      context,
+                      'countryListScreen',
+                    );
                   },
                   child: Container(
                     padding: EdgeInsets.symmetric(vertical: 5, horizontal: 20),

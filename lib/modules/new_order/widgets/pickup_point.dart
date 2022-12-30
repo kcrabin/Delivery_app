@@ -1,7 +1,7 @@
-import 'package:deliveryapp/modules/new_order/widgets/address_selection_page.dart';
 import 'package:flutter/material.dart';
 
 import '../../../widgets/custom_textfield.dart';
+import '../../../widgets/custom_textfieldAdditionalService.dart';
 import '../../constants.dart';
 
 class PickupPoint extends StatefulWidget {
@@ -132,6 +132,12 @@ class _PickupPointState extends State<PickupPoint> {
                           thickness: 1,
                         ),
                       ),
+                      locationSelected == ''
+                          ? Text(
+                              'Mandatory field',
+                              style: TextStyle(color: Colors.red, fontSize: 12),
+                            )
+                          : SizedBox(),
                       // const SizedBox(
                       //   height: 10,
                       // ),
@@ -184,7 +190,7 @@ class _PickupPointState extends State<PickupPoint> {
                       widget.scheduleContainerClicked == true
                           ? SizedBox(
                               // height: 50,
-                              child: CustomTextfield(
+                              child: CustomTextfieldAdditionalService(
                                 hint: 'When to arrive at this address',
                                 suffixIcon: Icons.access_time,
                                 inputAction: TextInputAction.next,
@@ -350,14 +356,14 @@ class _PickupPointState extends State<PickupPoint> {
                               child: Column(
                                 children: [
                                   SizedBox(
-                                    child: CustomTextfield(
+                                    child: CustomTextfieldAdditionalService(
                                       hint: 'Contact person',
                                       inputType: TextInputType.name,
                                       controller: contactPersonController,
                                     ),
                                   ),
                                   SizedBox(
-                                    child: CustomTextfield(
+                                    child: CustomTextfieldAdditionalService(
                                       hint: 'Your order number',
                                       inputType: TextInputType.name,
                                       controller: orderNumberController,

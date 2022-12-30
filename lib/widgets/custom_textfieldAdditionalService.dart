@@ -1,7 +1,7 @@
 import 'package:deliveryapp/modules/constants.dart';
 import 'package:flutter/material.dart';
 
-class CustomTextfield extends StatefulWidget {
+class CustomTextfieldAdditionalService extends StatelessWidget {
   String hint;
   String? label;
   String? initialValue;
@@ -10,7 +10,7 @@ class CustomTextfield extends StatefulWidget {
   TextInputAction? inputAction;
   TextInputType? inputType;
   TextEditingController? controller;
-  CustomTextfield(
+  CustomTextfieldAdditionalService(
       {Key? key,
       required this.hint,
       this.label,
@@ -22,41 +22,22 @@ class CustomTextfield extends StatefulWidget {
       : super(key: key);
 
   @override
-  State<CustomTextfield> createState() => _CustomTextfieldState();
-}
-
-class _CustomTextfieldState extends State<CustomTextfield> {
-  bool hasData = false;
-
-  @override
   Widget build(BuildContext context) {
     return TextFormField(
-      textInputAction: widget.inputAction,
-      keyboardType: widget.inputType,
-      controller: widget.controller,
-      initialValue: widget.initialValue,
+      textInputAction: inputAction,
+      keyboardType: inputType,
+      controller: controller,
+      initialValue: initialValue,
       decoration: InputDecoration(
-          errorText: hasData == false ? 'Mandatory field' : null,
           enabledBorder: UnderlineInputBorder(
               borderSide: BorderSide(color: Colors.grey, width: 1)),
           focusedBorder: UnderlineInputBorder(
             borderSide: BorderSide(color: blueColor, width: 1),
           ),
-          hintText: widget.hint,
-          labelText: widget.label,
+          hintText: hint,
+          labelText: label,
           hintStyle: TextStyle(fontSize: 20),
-          suffixIcon: Icon(widget.suffixIcon)),
-      onChanged: (value) {
-        if (value.isEmpty) {
-          setState(() {
-            hasData = false;
-          });
-        } else {
-          setState(() {
-            hasData = true;
-          });
-        }
-      },
+          suffixIcon: Icon(suffixIcon)),
     );
   }
 }

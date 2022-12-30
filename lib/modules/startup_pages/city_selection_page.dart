@@ -1,7 +1,6 @@
 import 'package:deliveryapp/modules/constants.dart';
-import 'package:deliveryapp/widgets/sp_utils.dart';
-import 'package:deliveryapp/widgets/storage.dart';
 import 'package:flutter/material.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 
 class CitySelectionPage extends StatefulWidget {
   const CitySelectionPage({super.key});
@@ -31,6 +30,20 @@ class _CitySelectionPageState extends State<CitySelectionPage> {
   String citySelected = '';
   String countrySelected = '';
 
+  void getDataFromSharedpref() async {
+    final SharedPreferences pref = await SharedPreferences.getInstance();
+    print('this id shared pref ---${pref.getString('country')}');
+    setState(() {
+      countrySelected = pref.getString('country')!;
+    });
+  }
+
+  // @override
+  // void initState() {
+  //   getDataFromSharedpref();
+  //   super.initState();
+  // }
+
   @override
   Widget build(BuildContext context) {
     // final arguments = (ModalRoute.of(context)?.settings.arguments ??
@@ -38,8 +51,9 @@ class _CitySelectionPageState extends State<CitySelectionPage> {
     // setState(() {
     //   countrySelected = arguments['countrySelected'];
     // });
-    String tempCountrySelected = SPUtil.read(ConstantsStrings.name);
+    // String tempCountrySelected = SPUtil.read(ConstantsStrings.name);
     // print(tempCountrySelected);
+    getDataFromSharedpref();
     return Scaffold(
       backgroundColor: Colors.white,
       appBar: AppBar(
@@ -57,10 +71,12 @@ class _CitySelectionPageState extends State<CitySelectionPage> {
                   color: Colors.black),
             ),
             GestureDetector(
-              onTap: () {},
+              onTap: () {
+                Navigator.pushNamed(context, 'countryListScreen');
+              },
               child: Text(
-                tempCountrySelected,
-                style: TextStyle(fontSize: 16, color: Colors.red),
+                countrySelected,
+                style: TextStyle(fontSize: 16, color: blueColor),
               ),
             ),
           ],

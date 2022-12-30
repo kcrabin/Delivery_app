@@ -1,4 +1,5 @@
 import 'package:deliveryapp/widgets/custom_textfield.dart';
+import 'package:deliveryapp/widgets/custom_textfieldAdditionalService.dart';
 import 'package:flutter/material.dart';
 
 import '../../constants.dart';
@@ -41,7 +42,7 @@ class _PaymentContainerState extends State<PaymentContainer> {
               // ),
               Expanded(
                   // width: MediaQuery.of(context).size.width / 5,
-                  child: CustomTextfield(hint: 'Promocode')),
+                  child: CustomTextfieldAdditionalService(hint: 'Promocode')),
               InkWell(
                 onTap: () {},
                 child: Container(

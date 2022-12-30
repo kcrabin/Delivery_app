@@ -1,3 +1,4 @@
+import 'package:deliveryapp/widgets/custom_textfieldAdditionalService.dart';
 import 'package:flutter/material.dart';
 
 import '../../../widgets/custom_textfield.dart';
@@ -82,7 +83,7 @@ class _PackageContainerState extends State<PackageContainer> {
           SizedBox(
             height: 10,
           ),
-          CustomTextfield(
+          CustomTextfieldAdditionalService(
             hint: 'Parcel value',
             inputType: TextInputType.number,
           ),

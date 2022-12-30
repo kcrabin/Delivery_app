@@ -1,12 +1,29 @@
 import 'package:flutter/material.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 
 import '../constants.dart';
 
-class Profile extends StatelessWidget {
+class Profile extends StatefulWidget {
   const Profile({super.key});
 
   @override
+  State<Profile> createState() => _ProfileState();
+}
+
+class _ProfileState extends State<Profile> {
+  String region = '🇳🇵 Nepal';
+
+  void getDataFromSharedpref() async {
+    final SharedPreferences pref = await SharedPreferences.getInstance();
+    print('this id shared pref ---${pref.getString('country')}');
+    setState(() {
+      region = pref.getString('country')!;
+    });
+  }
+
+  @override
   Widget build(BuildContext context) {
+    getDataFromSharedpref();
     return Scaffold(
       backgroundColor: Colors.white,
       appBar: AppBar(elevation: 0, backgroundColor: Colors.white, actions: [
@@ -51,6 +68,35 @@ class Profile extends StatelessWidget {
                     'Personal Information',
                     style: TextStyle(fontSize: 18),
                   )
+                ],
+              ),
+            ),
+            SizedBox(
+              height: MediaQuery.of(context).size.height * 0.03,
+            ),
+            InkWell(
+              onTap: () {
+                Navigator.pushNamed(context, 'countryListScreen');
+              },
+              child: Row(
+                mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                children: [
+                  Row(
+                    children: [
+                      Icon(
+                        Icons.public,
+                        color: Colors.grey,
+                      ),
+                      SizedBox(
+                        width: 10,
+                      ),
+                      Text(
+                        'Change Region',
+                        style: TextStyle(fontSize: 18),
+                      ),
+                    ],
+                  ),
+                  Text(region),
                 ],
               ),
             ),

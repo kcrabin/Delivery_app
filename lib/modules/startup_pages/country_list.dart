@@ -1,5 +1,4 @@
-import 'package:deliveryapp/widgets/sp_utils.dart';
-import 'package:deliveryapp/widgets/storage.dart';
+import 'package:deliveryapp/modules/startup_pages/city_selection_page.dart';
 import 'package:flutter/material.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
@@ -27,11 +26,6 @@ class _CountryListState extends State<CountryList> {
 
   @override
   Widget build(BuildContext context) {
-    final arguments = (ModalRoute.of(context)?.settings.arguments ??
-        <String, dynamic>{}) as Map;
-    setState(() {
-      countrySelected = arguments['previouslySelectedCountry'];
-    });
     return Scaffold(
       backgroundColor: Colors.white,
       appBar: AppBar(
@@ -40,7 +34,7 @@ class _CountryListState extends State<CountryList> {
         backgroundColor: Colors.white,
         leading: IconButton(
           onPressed: () {
-            Navigator.pop(context, countrySelected);
+            Navigator.pop(context);
           },
           icon: Icon(
             Icons.arrow_back,
@@ -61,17 +55,26 @@ class _CountryListState extends State<CountryList> {
               padding: const EdgeInsets.symmetric(vertical: 15, horizontal: 20),
               child: GestureDetector(
                 onTap: () async {
-                  SharedPreferences pref =
+                  // final LocalStorage storage =
+                  //     new LocalStorage('localstorage_app');
+                  final SharedPreferences pref =
                       await SharedPreferences.getInstance();
 
                   setState(() {
                     countrySelected = countries[index];
+                    pref.setString('country', countrySelected);
 
                     // print('checking country  $countrySelected');
+                    // SPUtil.writeString('country', countrySelected);
+
+                    // storage.setItem('country', countrySelected);
                   });
                   // pref.setString(ConstantsStrings.country, countrySelected);
-                  SPUtil.writeString(ConstantsStrings.name, countrySelected);
                   // print(SPUtil.read(ConstantsStrings.name));
+                  print('this id shared pref ---${pref.getString('country')}');
+
+                  // print(
+                  //     'this is retrived from storage ---- ${storage.getItem('country')}');
 
                   Navigator.pop(context, countrySelected);
                 },

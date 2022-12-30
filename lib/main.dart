@@ -14,6 +14,7 @@ import 'package:deliveryapp/modules/profile/About_us.dart';
 import 'package:deliveryapp/modules/profile/personal_information.dart';
 import 'package:deliveryapp/modules/profile/profile.dart';
 import 'package:deliveryapp/modules/profile/report_problem.dart';
+import 'package:deliveryapp/modules/splash_screen/splash_screen.dart';
 import 'package:deliveryapp/modules/startup_pages/city_selection_page.dart';
 import 'package:deliveryapp/modules/startup_pages/country_list.dart';
 import 'package:deliveryapp/modules/startup_pages/nationality_selection_page.dart';
@@ -40,7 +41,7 @@ class MyApp extends StatelessWidget {
       theme: ThemeData(fontFamily: 'NunitoSans'),
       debugShowCheckedModeBanner: false,
       title: 'Borzo Courier',
-      initialRoute: 'nationalitySelectionScreen',
+      initialRoute: 'splashScreen',
       routes: {
         'orderScreen': (context) => Orders(),
         'newOrderScreen': (context) => NewOrder(),
@@ -63,6 +64,7 @@ class MyApp extends StatelessWidget {
         'personalInformationScreen': (context) => PersonalInformation(),
         'reportProblemScreen': (context) => ReportProblem(),
         'verifyOtpScreen': (context) => VerifyOTP(),
+        'splashScreen': (context) => SplashScreen(),
       },
       // home: Orders(),
     );

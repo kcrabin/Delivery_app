@@ -1,3 +1,4 @@
+import 'package:deliveryapp/widgets/custom_textfieldAdditionalService.dart';
 import 'package:flutter/material.dart';
 
 import '../../../widgets/custom_textfield.dart';
@@ -24,6 +25,7 @@ class DeliveryPoint extends StatefulWidget {
 
 class _DeliveryPointState extends State<DeliveryPoint> {
   TextEditingController phoneController = TextEditingController();
+  TextEditingController timeController = TextEditingController();
   TextEditingController contactPersonController = TextEditingController();
   TextEditingController orderNumberController = TextEditingController();
 
@@ -143,6 +145,12 @@ class _DeliveryPointState extends State<DeliveryPoint> {
                           thickness: 1,
                         ),
                       ),
+                      locationSelected == ''
+                          ? Text(
+                              'Mandatory field',
+                              style: TextStyle(color: Colors.red, fontSize: 12),
+                            )
+                          : SizedBox(),
                       !widget.isScheduleClicked && locationSelected == ''
                           ? Container(
                               padding: EdgeInsets.all(8),
@@ -189,11 +197,12 @@ class _DeliveryPointState extends State<DeliveryPoint> {
                       widget.isScheduleClicked == true
                           ? SizedBox(
                               // height: 50,
-                              child: CustomTextfield(
+                              child: CustomTextfieldAdditionalService(
                                 hint: 'When to arrive at this address',
                                 suffixIcon: Icons.access_time,
                                 inputAction: TextInputAction.next,
                                 inputType: TextInputType.text,
+                                controller: timeController,
                               ),
                             )
                           : SizedBox(),
@@ -430,14 +439,14 @@ class _DeliveryPointState extends State<DeliveryPoint> {
                               child: Column(
                                 children: [
                                   SizedBox(
-                                    child: CustomTextfield(
+                                    child: CustomTextfieldAdditionalService(
                                       hint: 'Contact person',
                                       inputType: TextInputType.name,
                                       controller: contactPersonController,
                                     ),
                                   ),
                                   SizedBox(
-                                    child: CustomTextfield(
+                                    child: CustomTextfieldAdditionalService(
                                       hint: 'Your order number',
                                       inputType: TextInputType.name,
                                       controller: orderNumberController,
