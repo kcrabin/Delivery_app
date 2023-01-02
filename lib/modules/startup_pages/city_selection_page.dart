@@ -11,21 +11,22 @@ class CitySelectionPage extends StatefulWidget {
 
 class _CitySelectionPageState extends State<CitySelectionPage> {
   List<String> cities = [
-    'Pokhara',
-    'Kathmandu',
-    'Butwal',
-    'Biratnagar',
-    'Lalitpur',
-    'Birjung',
-    'Bharatpur',
-    'Dharan',
-    'Janakpur',
-    'Itahari',
-    'Hetauda',
-    'Bhaktapur',
-    'Kritipur',
-    'Illam',
-    'Banepa',
+    'City 1',
+    'City 2',
+    'City 3',
+    'City 4',
+    'City 5',
+    'City 6',
+    'City 7',
+    'City 8',
+    'City 9',
+    'City 10',
+    'City 11',
+    'City 12',
+    'City 13',
+    'City 14',
+    'City 15',
+    'City 16'
   ];
   String citySelected = '';
   String countrySelected = '';

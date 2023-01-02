@@ -37,118 +37,120 @@ class _OrdersState extends State<Orders> {
       child: Scaffold(
         // appBar: AppBar(title: Text('Orders')),
         body: Center(
-          child: Column(
-            mainAxisAlignment: MainAxisAlignment.end,
-            children: [
-              SizedBox(
-                height: MediaQuery.of(context).size.height / 9,
-              ),
-              Image.asset(
-                'assets/images/gift.png',
-                height: 180,
-              ),
-              const SizedBox(
-                height: 5,
-              ),
-              const Text(
-                'Send a package',
-                style: TextStyle(
-                  fontSize: 30,
-                  fontWeight: FontWeight.bold,
+          child: SingleChildScrollView(
+            child: Column(
+              mainAxisAlignment: MainAxisAlignment.end,
+              children: [
+                SizedBox(
+                  height: MediaQuery.of(context).size.height / 9,
                 ),
-              ),
-              const SizedBox(
-                height: 5,
-              ),
-              Text(
-                "A courier will pick up and",
-                style: TextStyle(fontSize: 17, color: Colors.grey[700]),
-              ),
-              Text(
-                "deliver documents, gifts,",
-                style: TextStyle(fontSize: 17, color: Colors.grey[700]),
-              ),
-              Text(
-                "food and other items",
-                style: TextStyle(fontSize: 17, color: Colors.grey[700]),
-              ),
-              const SizedBox(
-                height: 25,
-              ),
-              ElevatedButton(
-                child: Text('Create order',
-                    style: TextStyle(fontSize: 22, color: Colors.white)),
-                style: ElevatedButton.styleFrom(
-                    elevation: 0,
-                    backgroundColor: blueColor,
-                    shape: const RoundedRectangleBorder(
-                      borderRadius: BorderRadius.all(
-                        Radius.circular(25),
+                Image.asset(
+                  'assets/images/gift.png',
+                  height: 180,
+                ),
+                const SizedBox(
+                  height: 5,
+                ),
+                const Text(
+                  'Send a package',
+                  style: TextStyle(
+                    fontSize: 30,
+                    fontWeight: FontWeight.bold,
+                  ),
+                ),
+                const SizedBox(
+                  height: 5,
+                ),
+                Text(
+                  "A courier will pick up and",
+                  style: TextStyle(fontSize: 17, color: Colors.grey[700]),
+                ),
+                Text(
+                  "deliver documents, gifts,",
+                  style: TextStyle(fontSize: 17, color: Colors.grey[700]),
+                ),
+                Text(
+                  "food and other items",
+                  style: TextStyle(fontSize: 17, color: Colors.grey[700]),
+                ),
+                const SizedBox(
+                  height: 25,
+                ),
+                ElevatedButton(
+                  child: Text('Create order',
+                      style: TextStyle(fontSize: 22, color: Colors.white)),
+                  style: ElevatedButton.styleFrom(
+                      elevation: 0,
+                      backgroundColor: blueColor,
+                      shape: const RoundedRectangleBorder(
+                        borderRadius: BorderRadius.all(
+                          Radius.circular(25),
+                        ),
+                      ),
+                      minimumSize:
+                          Size(MediaQuery.of(context).size.width / 2, 55)),
+                  onPressed: () {
+                    Navigator.push(context,
+                        MaterialPageRoute(builder: (context) => NewOrder()));
+                  },
+                ),
+                SizedBox(
+                  height: MediaQuery.of(context).size.height / 6.5,
+                ),
+                Row(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  children: [
+                    TextButton(
+                      onPressed: () {
+                        Navigator.pushNamed(context, 'loginScreen');
+                      },
+                      child: Text(
+                        'Log in',
+                        style: TextStyle(
+                            fontSize: 17,
+                            color: blueColor,
+                            fontWeight: FontWeight.w600),
+                      ),
+                      style: TextButton.styleFrom(
+                        minimumSize: Size.zero,
+                        padding: EdgeInsets.zero,
+                        tapTargetSize: MaterialTapTargetSize.shrinkWrap,
                       ),
                     ),
-                    minimumSize:
-                        Size(MediaQuery.of(context).size.width / 2, 55)),
-                onPressed: () {
-                  Navigator.push(context,
-                      MaterialPageRoute(builder: (context) => NewOrder()));
-                },
-              ),
-              SizedBox(
-                height: MediaQuery.of(context).size.height / 6.5,
-              ),
-              Row(
-                mainAxisAlignment: MainAxisAlignment.center,
-                children: [
-                  TextButton(
-                    onPressed: () {
-                      Navigator.pushNamed(context, 'loginScreen');
-                    },
-                    child: Text(
-                      'Log in',
-                      style: TextStyle(
-                          fontSize: 17,
-                          color: blueColor,
-                          fontWeight: FontWeight.w600),
+                    Text(
+                      ' or ',
+                      style: TextStyle(fontSize: 17, color: Colors.grey),
                     ),
-                    style: TextButton.styleFrom(
-                      minimumSize: Size.zero,
-                      padding: EdgeInsets.zero,
-                      tapTargetSize: MaterialTapTargetSize.shrinkWrap,
+                    TextButton(
+                      onPressed: () {
+                        Navigator.pushNamed(context, 'registerScreen');
+                      },
+                      child: Text(
+                        'Sign up',
+                        style: TextStyle(
+                            fontSize: 17,
+                            color: blueColor,
+                            fontWeight: FontWeight.w600),
+                      ),
+                      style: TextButton.styleFrom(
+                        minimumSize: Size.zero,
+                        padding: EdgeInsets.zero,
+                        tapTargetSize: MaterialTapTargetSize.shrinkWrap,
+                      ),
                     ),
-                  ),
-                  Text(
-                    ' or ',
-                    style: TextStyle(fontSize: 17, color: Colors.grey),
-                  ),
-                  TextButton(
-                    onPressed: () {
-                      Navigator.pushNamed(context, 'registerScreen');
-                    },
-                    child: Text(
-                      'Sign up',
-                      style: TextStyle(
-                          fontSize: 17,
-                          color: blueColor,
-                          fontWeight: FontWeight.w600),
+                    SizedBox(
+                      height: MediaQuery.of(context).size.height / 10,
                     ),
-                    style: TextButton.styleFrom(
-                      minimumSize: Size.zero,
-                      padding: EdgeInsets.zero,
-                      tapTargetSize: MaterialTapTargetSize.shrinkWrap,
+                    SizedBox(
+                      child: Divider(
+                        color: Colors.grey,
+                        thickness: 1,
+                      ),
                     ),
-                  ),
-                  SizedBox(
-                    height: MediaQuery.of(context).size.height / 10,
-                  ),
-                  SizedBox(
-                    child: Divider(
-                      color: Colors.grey,
-                      thickness: 1,
-                    ),
-                  ),
-                ],
-              ),
-            ],
+                  ],
+                ),
+              ],
+            ),
           ),
         ),
         bottomNavigationBar: BottomNavigationBar(
