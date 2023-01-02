@@ -143,7 +143,7 @@ class _ReportProblemState extends State<ReportProblem> {
                   color: Colors.grey.shade400,
                 ),
                 TextFormField(
-                  keyboardType: TextInputType.phone,
+                  keyboardType: TextInputType.text,
                   controller: reportController,
                   maxLines: 7,
                   // initialValue: '+977',
