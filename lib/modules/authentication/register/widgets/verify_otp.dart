@@ -124,7 +124,7 @@ class _VerifyOTPState extends State<VerifyOTP> {
                     if (invalidOTP == false) {
                       Navigator.pushNamed(context, 'orderScreen');
                       Utils.showSnackBar('Registered successfully', blueColor,
-                          MediaQuery.of(context).size.height - 100);
+                          MediaQuery.of(context).size.height - 150);
                     } else {
                       Utils.showSnackBar('Invalid OTP', Colors.red,
                           MediaQuery.of(context).size.height - 100);

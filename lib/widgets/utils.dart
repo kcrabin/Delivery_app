@@ -1,4 +1,3 @@
-import 'package:deliveryapp/modules/constants.dart';
 import 'package:flutter/material.dart';
 
 class Utils {

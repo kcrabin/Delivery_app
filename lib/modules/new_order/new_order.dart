@@ -39,17 +39,14 @@ class _NewOrderState extends State<NewOrder> {
   }
 
   void clearForm() {
-    // for (int i = 0; i < deliveryPoints.length; i++) {
-    // if(i==deliveryPoints[0]){
+    optimizeRoute = false;
+    preferDeliveryBag = false;
+    notifyBySMS = true;
+    deliveryItemWeight = 'Up to 1 kg';
 
-    // }
-
-    // }
-
-    var info = deliveryPoints[0];
     deliveryPoints.clear();
     setState(() {
-      deliveryPoints.add(info);
+      addNewDeliveryPoint(0);
     });
   }
 
@@ -179,6 +176,8 @@ class _NewOrderState extends State<NewOrder> {
               onPressed: () {
                 _formKey.currentState?.reset();
                 clearForm();
+
+                setState(() {});
               },
               child: const Text(
                 'Clear',
@@ -464,7 +463,9 @@ class _NewOrderState extends State<NewOrder> {
                                                     ),
                                                     minimumSize: Size(
                                                         double.infinity, 50)),
-                                                onPressed: () {},
+                                                onPressed: () {
+                                                  Navigator.pop(context);
+                                                },
                                               ),
                                             ],
                                           ),

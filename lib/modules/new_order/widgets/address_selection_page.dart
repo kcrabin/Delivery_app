@@ -1,5 +1,4 @@
 import 'package:deliveryapp/modules/constants.dart';
-import 'package:deliveryapp/widgets/custom_textfield.dart';
 import 'package:deliveryapp/widgets/custom_textfieldAdditionalService.dart';
 import 'package:flutter/material.dart';
 import 'package:geocoding/geocoding.dart';

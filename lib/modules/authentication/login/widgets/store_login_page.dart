@@ -33,7 +33,7 @@ class _StoreLoginPageState extends State<StoreLoginPage> {
         children: [
           TextFormField(
             keyboardType: TextInputType.emailAddress,
-            // controller: emailcontroller,
+            controller: emailcontroller,
             decoration: InputDecoration(
               labelText: 'E-mail',
               enabledBorder: UnderlineInputBorder(
@@ -42,7 +42,6 @@ class _StoreLoginPageState extends State<StoreLoginPage> {
                   borderSide: BorderSide(color: blueColor, width: 1)),
               contentPadding: EdgeInsets.all(8),
             ),
-
             validator: (value) {
               bool emailValid = RegExp(
                       r"^[a-zA-Z0-9.a-zA-Z0-9.!#$%&'*+-/=?^_`{|}~]+@[a-zA-Z0-9]+\.[a-zA-Z]+")
@@ -53,11 +52,12 @@ class _StoreLoginPageState extends State<StoreLoginPage> {
               } else if (!emailValid) {
                 return "Enter valid Email";
               }
+              return null;
             },
           ),
           TextFormField(
             keyboardType: TextInputType.text,
-            // controller: passwordController,
+            controller: passwordController,
             obscureText: passToggle,
             decoration: InputDecoration(
               labelText: 'Password',
@@ -80,10 +80,10 @@ class _StoreLoginPageState extends State<StoreLoginPage> {
             validator: (value) {
               if (value!.isEmpty) {
                 return "Please Enter Password";
+              } else if (passwordController.text.length < 6) {
+                return "Password should not be less than 6 characters";
               }
-              // else if (passwordController.text.length < 6) {
-              //   return "Password should not be less than 6 characters";
-              // }
+              return null;
             },
           ),
           Spacer(),
@@ -116,7 +116,7 @@ class _StoreLoginPageState extends State<StoreLoginPage> {
                 onPressed: () {
                   if (_formKey.currentState!.validate()) {
                     Utils.showSnackBar('Login Successful', blueColor,
-                        MediaQuery.of(context).size.height - 100);
+                        MediaQuery.of(context).size.height - 150);
                     Navigator.pushNamed(context, 'orderScreen');
                   } else {
                     Utils.showSnackBar('Invalid email or password', Colors.red,

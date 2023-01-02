@@ -15,7 +15,7 @@ class _ProfileState extends State<Profile> {
 
   void getDataFromSharedpref() async {
     final SharedPreferences pref = await SharedPreferences.getInstance();
-    print('this id shared pref ---${pref.getString('country')}');
+    // print('this id shared pref ---${pref.getString('country')}');
     setState(() {
       region = pref.getString('country') ?? '🇳🇵 Nepal';
     });

@@ -1,7 +1,5 @@
 import 'package:deliveryapp/widgets/custom_textfield.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/src/widgets/container.dart';
-import 'package:flutter/src/widgets/framework.dart';
 
 class SearchPage extends StatelessWidget {
   const SearchPage({super.key});

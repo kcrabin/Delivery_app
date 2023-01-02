@@ -46,9 +46,10 @@ class _PersonLoginPageState extends State<PersonLoginPage> {
             validator: (value) {
               if (value!.isEmpty) {
                 return "Please Enter Phone number";
-              } else if (phoneController.text.length < 10) {
+              } else if (phoneController.text.length < 15) {
                 return "Enter valid Phone number";
               }
+              return null;
             },
           ),
           TextFormField(
@@ -78,6 +79,7 @@ class _PersonLoginPageState extends State<PersonLoginPage> {
               } else if (passwordController.text.length < 6) {
                 return "Password should not be less than 6 characters";
               }
+              return null;
             },
           ),
           Spacer(),
@@ -110,7 +112,7 @@ class _PersonLoginPageState extends State<PersonLoginPage> {
                 onPressed: () {
                   if (_formKey.currentState!.validate()) {
                     Utils.showSnackBar('Login Successful', blueColor,
-                        MediaQuery.of(context).size.height - 100);
+                        MediaQuery.of(context).size.height - 150);
                     Navigator.pushNamed(context, 'orderScreen');
                   } else {
                     Utils.showSnackBar('Invalid phone or password', Colors.red,

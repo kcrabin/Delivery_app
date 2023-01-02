@@ -5,7 +5,7 @@
    <application
         android:label="deliveryapp"
         android:name="${applicationName}"
-        android:icon="@mipmap/launcher_icon">
+        android:icon="@mipmap/ic_launcher">
         <meta-data android:name="com.google.android.geo.API_KEY"
                android:value="AIzaSyBXuXAfJ0V5WD2O_3ghOYa-0qGmXSWg_NE"/>
         <activity

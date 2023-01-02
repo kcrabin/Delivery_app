@@ -16,7 +16,7 @@ class _NationalitySelectionPageState extends State<NationalitySelectionPage> {
 
   void getDataFromSharedpref() async {
     final SharedPreferences pref = await SharedPreferences.getInstance();
-    print('this id shared pref ---${pref.getString('country')}');
+    // print('this id shared pref ---${pref.getString('country')}');
     setState(() {
       if (pref.getString('country') != '' ||
           pref.getString('country') != null) {

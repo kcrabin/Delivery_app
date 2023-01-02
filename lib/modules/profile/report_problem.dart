@@ -159,6 +159,7 @@ class _ReportProblemState extends State<ReportProblem> {
                     if (value!.isEmpty) {
                       return "Please describe the problem to help us solve faster";
                     }
+                    return null;
                   },
                 ),
 
@@ -295,7 +296,7 @@ class _ReportProblemState extends State<ReportProblem> {
                 Navigator.pop(context);
               } else {
                 Utils.showSnackBar('Describe your problem.', Colors.red,
-                    MediaQuery.of(context).size.height - 150);
+                    MediaQuery.of(context).size.height - 180);
               }
             },
           ),

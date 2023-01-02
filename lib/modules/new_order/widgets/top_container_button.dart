@@ -1,7 +1,5 @@
 import 'package:flutter/material.dart';
 
-import '../../constants.dart';
-
 class TopContainerButton extends StatelessWidget {
   Color containerColor;
   BoxBorder borderRadiusColor;

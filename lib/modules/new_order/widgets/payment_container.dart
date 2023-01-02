@@ -1,20 +1,17 @@
-import 'package:deliveryapp/widgets/custom_textfield.dart';
 import 'package:deliveryapp/widgets/custom_textfieldAdditionalService.dart';
 import 'package:flutter/material.dart';
 
-import '../../constants.dart';
-
 class PaymentContainer extends StatefulWidget {
-  const PaymentContainer({
-    Key? key,
-  }) : super(key: key);
+  const PaymentContainer({Key? key}) : super(key: key);
 
   @override
   State<PaymentContainer> createState() => _PaymentContainerState();
 }
 
 class _PaymentContainerState extends State<PaymentContainer> {
+  TextEditingController promocodeController = TextEditingController();
   String selectedMethod = 'Cash';
+
   @override
   Widget build(BuildContext context) {
     return Padding(
@@ -42,7 +39,10 @@ class _PaymentContainerState extends State<PaymentContainer> {
               // ),
               Expanded(
                   // width: MediaQuery.of(context).size.width / 5,
-                  child: CustomTextfieldAdditionalService(hint: 'Promocode')),
+                  child: CustomTextfieldAdditionalService(
+                hint: 'Promocode',
+                controller: promocodeController,
+              )),
               InkWell(
                 onTap: () {},
                 child: Container(

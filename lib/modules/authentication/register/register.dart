@@ -1,6 +1,4 @@
 import 'package:deliveryapp/modules/constants.dart';
-import 'package:deliveryapp/widgets/custom_textfield.dart';
-import 'package:deliveryapp/widgets/custom_textfieldAdditionalService.dart';
 import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
 
@@ -14,7 +12,7 @@ class RegisterPage extends StatefulWidget {
 }
 
 class _RegisterPageState extends State<RegisterPage> {
-  TextEditingController phoneController = TextEditingController(text: '+977');
+  TextEditingController phoneController = TextEditingController(text: '+977 ');
   final _formKey = GlobalKey<FormState>();
 
   @override
@@ -80,7 +78,7 @@ class _RegisterPageState extends State<RegisterPage> {
                 validator: (value) {
                   if (value!.isEmpty) {
                     return "Please Enter Phone number";
-                  } else if (phoneController.text.length < 10) {
+                  } else if (phoneController.text.length < 15) {
                     return "Enter valid Phone number";
                   }
                 },
