@@ -16,6 +16,7 @@ import 'package:deliveryapp/modules/profile/About_us.dart';
 import 'package:deliveryapp/modules/profile/personal_information.dart';
 import 'package:deliveryapp/modules/profile/profile.dart';
 import 'package:deliveryapp/modules/profile/report_problem.dart';
+import 'package:deliveryapp/modules/profile/service_information.dart';
 import 'package:deliveryapp/modules/splash_screen/splash_screen.dart';
 import 'package:deliveryapp/modules/startup_pages/city_selection_page.dart';
 import 'package:deliveryapp/modules/startup_pages/country_list.dart';
@@ -69,6 +70,7 @@ class MyApp extends StatelessWidget {
         'splashScreen': (context) => SplashScreen(),
         'verifyPasswordWithOTP': (context) => VerifyPasswordWithOTP(),
         'resetPasswordScreen': (context) => ResetPassword(),
+        'serviceInformation': (context) => ServiceInformation(),
       },
       // home: Orders(),
     );

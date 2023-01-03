@@ -48,11 +48,11 @@ class TopContainerButton extends StatelessWidget {
             children: [
               const Text(
                 'from ₹ ',
-                style: TextStyle(fontSize: 22, fontWeight: FontWeight.w500),
+                style: TextStyle(fontSize: 18, fontWeight: FontWeight.w500),
               ),
               const Text(
                 '45',
-                style: TextStyle(fontSize: 22, fontWeight: FontWeight.w500),
+                style: TextStyle(fontSize: 18, fontWeight: FontWeight.w500),
               ),
               const SizedBox(
                 width: 3,

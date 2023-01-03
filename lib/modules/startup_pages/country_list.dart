@@ -43,7 +43,7 @@ class _CountryListState extends State<CountryList> {
         title: Text(
           'Choose your country',
           style: TextStyle(
-              fontSize: 20, color: Colors.black, fontWeight: FontWeight.bold),
+              fontSize: 17, color: Colors.black, fontWeight: FontWeight.bold),
         ),
       ),
       body: ListView.builder(

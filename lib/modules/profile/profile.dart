@@ -33,7 +33,7 @@ class _ProfileState extends State<Profile> {
             },
             child: Text(
               'Log out',
-              style: TextStyle(color: blueColor, fontSize: 18),
+              style: TextStyle(color: blueColor, fontSize: 15),
             ))
       ]),
       body: Padding(
@@ -46,7 +46,7 @@ class _ProfileState extends State<Profile> {
             ),
             Text(
               'Hello!',
-              style: TextStyle(fontSize: 40, fontWeight: FontWeight.bold),
+              style: TextStyle(fontSize: 35, fontWeight: FontWeight.bold),
             ),
             SizedBox(
               height: MediaQuery.of(context).size.height * 0.05,
@@ -66,7 +66,7 @@ class _ProfileState extends State<Profile> {
                   ),
                   Text(
                     'Personal Information',
-                    style: TextStyle(fontSize: 18),
+                    style: TextStyle(fontSize: 15),
                   )
                 ],
               ),
@@ -92,7 +92,7 @@ class _ProfileState extends State<Profile> {
                       ),
                       Text(
                         'Change Region',
-                        style: TextStyle(fontSize: 18),
+                        style: TextStyle(fontSize: 15),
                       ),
                     ],
                   ),
@@ -118,7 +118,7 @@ class _ProfileState extends State<Profile> {
                   ),
                   Text(
                     'About',
-                    style: TextStyle(fontSize: 18),
+                    style: TextStyle(fontSize: 15),
                   )
                 ],
               ),
@@ -126,7 +126,7 @@ class _ProfileState extends State<Profile> {
             Spacer(),
             ElevatedButton(
               child: Text('Log in',
-                  style: TextStyle(fontSize: 20, color: Colors.white)),
+                  style: TextStyle(fontSize: 17, color: Colors.white)),
               style: ElevatedButton.styleFrom(
                   elevation: 0,
                   backgroundColor: blueColor,
@@ -151,7 +151,7 @@ class _ProfileState extends State<Profile> {
                   },
                   child: Text(
                     'Create account',
-                    style: TextStyle(color: blueColor, fontSize: 20),
+                    style: TextStyle(color: blueColor, fontSize: 17),
                   )),
             )
           ],

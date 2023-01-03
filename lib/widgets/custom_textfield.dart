@@ -44,7 +44,7 @@ class _CustomTextfieldState extends State<CustomTextfield> {
           ),
           hintText: widget.hint,
           labelText: widget.label,
-          hintStyle: TextStyle(fontSize: 20),
+          hintStyle: TextStyle(fontSize: 17),
           suffixIcon: Icon(widget.suffixIcon)),
       onChanged: (value) {
         if (value.isEmpty) {

@@ -42,7 +42,7 @@ class _OrdersState extends State<Orders> {
               mainAxisAlignment: MainAxisAlignment.end,
               children: [
                 SizedBox(
-                  height: MediaQuery.of(context).size.height / 9,
+                  height: MediaQuery.of(context).size.height / 7,
                 ),
                 Image.asset(
                   'assets/images/gift.png',
@@ -54,7 +54,7 @@ class _OrdersState extends State<Orders> {
                 const Text(
                   'Send a package',
                   style: TextStyle(
-                    fontSize: 30,
+                    fontSize: 26,
                     fontWeight: FontWeight.bold,
                   ),
                 ),
@@ -63,22 +63,22 @@ class _OrdersState extends State<Orders> {
                 ),
                 Text(
                   "A courier will pick up and",
-                  style: TextStyle(fontSize: 17, color: Colors.grey[700]),
+                  style: TextStyle(fontSize: 14, color: Colors.grey[700]),
                 ),
                 Text(
                   "deliver documents, gifts,",
-                  style: TextStyle(fontSize: 17, color: Colors.grey[700]),
+                  style: TextStyle(fontSize: 14, color: Colors.grey[700]),
                 ),
                 Text(
                   "food and other items",
-                  style: TextStyle(fontSize: 17, color: Colors.grey[700]),
+                  style: TextStyle(fontSize: 14, color: Colors.grey[700]),
                 ),
                 const SizedBox(
                   height: 25,
                 ),
                 ElevatedButton(
                   child: Text('Create order',
-                      style: TextStyle(fontSize: 22, color: Colors.white)),
+                      style: TextStyle(fontSize: 18, color: Colors.white)),
                   style: ElevatedButton.styleFrom(
                       elevation: 0,
                       backgroundColor: blueColor,
@@ -107,7 +107,7 @@ class _OrdersState extends State<Orders> {
                       child: Text(
                         'Log in',
                         style: TextStyle(
-                            fontSize: 17,
+                            fontSize: 14,
                             color: blueColor,
                             fontWeight: FontWeight.w600),
                       ),
@@ -119,7 +119,7 @@ class _OrdersState extends State<Orders> {
                     ),
                     Text(
                       ' or ',
-                      style: TextStyle(fontSize: 17, color: Colors.grey),
+                      style: TextStyle(fontSize: 14, color: Colors.grey),
                     ),
                     TextButton(
                       onPressed: () {
@@ -128,7 +128,7 @@ class _OrdersState extends State<Orders> {
                       child: Text(
                         'Sign up',
                         style: TextStyle(
-                            fontSize: 17,
+                            fontSize: 14,
                             color: blueColor,
                             fontWeight: FontWeight.w600),
                       ),
@@ -141,12 +141,12 @@ class _OrdersState extends State<Orders> {
                     SizedBox(
                       height: MediaQuery.of(context).size.height / 10,
                     ),
-                    SizedBox(
-                      child: Divider(
-                        color: Colors.grey,
-                        thickness: 1,
-                      ),
-                    ),
+                    // SizedBox(
+                    //   child: Divider(
+                    //     color: Colors.grey,
+                    //     thickness: 1,
+                    //   ),
+                    // ),
                   ],
                 ),
               ],

@@ -92,7 +92,7 @@ class _PersonLoginPageState extends State<PersonLoginPage> {
                 },
                 child: Text(
                   'Forgot password?',
-                  style: TextStyle(color: blueColor, fontSize: 18),
+                  style: TextStyle(color: blueColor, fontSize: 15),
                 ),
               ),
               ElevatedButton(

@@ -68,7 +68,7 @@ class _DeliveryPointState extends State<DeliveryPoint> {
                 style: TextStyle(
                     fontWeight: FontWeight.bold,
                     color: Colors.black,
-                    fontSize: 22),
+                    fontSize: 17),
               ),
             ],
           ),
@@ -83,7 +83,7 @@ class _DeliveryPointState extends State<DeliveryPoint> {
                     //   height: 335,
                     // ),
                     SizedBox(
-                      height: !clickedAdditionalServices ? 320 : 420,
+                      height: !clickedAdditionalServices ? 300 : 400,
                       child: VerticalDivider(
                         color: Colors.black,
                         width: 25,
@@ -126,7 +126,7 @@ class _DeliveryPointState extends State<DeliveryPoint> {
                                     locationSelected == ''
                                         ? 'Address selected'
                                         : locationSelected,
-                                    style: TextStyle(fontSize: 17),
+                                    style: TextStyle(fontSize: 14),
                                   ),
                                 ),
                               ),
@@ -170,7 +170,7 @@ class _DeliveryPointState extends State<DeliveryPoint> {
                                   Text(
                                     'Enter the address to find out\nwhen the courier will arrive',
                                     style: TextStyle(
-                                      fontSize: 17,
+                                      fontSize: 14,
                                     ),
                                   )
                                 ],
@@ -240,7 +240,7 @@ class _DeliveryPointState extends State<DeliveryPoint> {
                                           Text(
                                             'Instruction for the courier',
                                             style: TextStyle(
-                                                fontSize: 22,
+                                                fontSize: 18,
                                                 fontWeight: FontWeight.bold),
                                           ),
                                           Row(
@@ -340,7 +340,7 @@ class _DeliveryPointState extends State<DeliveryPoint> {
                                                 )
                                               : SizedBox(),
                                           SizedBox(
-                                            child: CustomTextfield(
+                                            child: CustomTextfieldAdditionalService(
                                                 hint:
                                                     'For example call in 30 minutes'),
                                           ),
@@ -350,7 +350,7 @@ class _DeliveryPointState extends State<DeliveryPoint> {
                                           ElevatedButton(
                                             child: Text('Confirm',
                                                 style: TextStyle(
-                                                    fontSize: 22,
+                                                    fontSize: 18,
                                                     color: Colors.white)),
                                             style: ElevatedButton.styleFrom(
                                                 elevation: 0,
@@ -384,8 +384,8 @@ class _DeliveryPointState extends State<DeliveryPoint> {
                                 Text(
                                   'Instruction for the courier',
                                   style: TextStyle(
-                                      fontSize: 20,
-                                      fontWeight: FontWeight.w600),
+                                      fontSize: 17,
+                                      fontWeight: FontWeight.w500),
                                 ),
                               ],
                             ),
@@ -401,7 +401,7 @@ class _DeliveryPointState extends State<DeliveryPoint> {
                       ),
                       const Text(
                         'The courier will buy out the goods, recieve cash or carry out the instruction.',
-                        style: TextStyle(fontSize: 16, color: Colors.grey),
+                        style: TextStyle(fontSize: 14, color: Colors.grey),
                       ),
                       const SizedBox(
                         height: 10,
@@ -423,7 +423,7 @@ class _DeliveryPointState extends State<DeliveryPoint> {
                             const Text(
                               'Additional services',
                               style: TextStyle(
-                                  fontSize: 22,
+                                  fontSize: 18,
                                   fontWeight: FontWeight.w500,
                                   color: Colors.grey),
                             ),
@@ -472,7 +472,7 @@ class _DeliveryPointState extends State<DeliveryPoint> {
                                     'Remove address',
                                     style: TextStyle(
                                         color: blueColor,
-                                        fontSize: 22,
+                                        fontSize: 18,
                                         fontWeight: FontWeight.w500),
                                   )),
                             ),

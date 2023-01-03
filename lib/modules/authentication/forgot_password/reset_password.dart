@@ -46,7 +46,7 @@ class ResetPasswordState extends State<ResetPassword> {
             children: [
               Text(
                 'Enter your new password.',
-                style: TextStyle(fontSize: 32, fontWeight: FontWeight.bold),
+                style: TextStyle(fontSize: 28, fontWeight: FontWeight.bold),
               ),
               SizedBox(
                 height: 20,
@@ -77,7 +77,7 @@ class ResetPasswordState extends State<ResetPassword> {
                 child: ElevatedButton(
                   child: Text(
                     'Submit',
-                    style: TextStyle(fontSize: 22),
+                    style: TextStyle(fontSize: 18),
                   ),
                   style: ElevatedButton.styleFrom(
                       elevation: 0,

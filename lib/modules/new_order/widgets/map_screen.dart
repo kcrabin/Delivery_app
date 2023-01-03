@@ -31,7 +31,7 @@ class _MapScreenState extends State<MapScreen> {
         title: Text(
           'Address on map',
           style: TextStyle(
-              fontSize: 20, fontWeight: FontWeight.bold, color: Colors.black),
+              fontSize: 17, fontWeight: FontWeight.bold, color: Colors.black),
         ),
         leading: IconButton(
           icon: Icon(
@@ -56,7 +56,7 @@ class _MapScreenState extends State<MapScreen> {
               },
               child: Text(
                 'Done',
-                style: TextStyle(color: blueColor, fontSize: 17),
+                style: TextStyle(color: blueColor, fontSize: 14),
               ))
         ],
       ),
@@ -92,7 +92,7 @@ class _MapScreenState extends State<MapScreen> {
                 textAlign: TextAlign.center,
                 style: TextStyle(
                   color: Colors.black,
-                  fontSize: 17,
+                  fontSize: 14,
                 ),
               ),
             ),
@@ -122,7 +122,7 @@ class _MapScreenState extends State<MapScreen> {
                     textAlign: TextAlign.center,
                     style: TextStyle(
                       color: Colors.black,
-                      fontSize: 20,
+                      fontSize: 17,
                     ),
                   ),
                 ),

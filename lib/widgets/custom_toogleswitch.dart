@@ -21,7 +21,7 @@ class CustomToogle extends StatelessWidget {
         Text(
           text,
           style: TextStyle(
-            fontSize: 20,
+            fontSize: 15,
           ),
         ),
         // Spacer(),

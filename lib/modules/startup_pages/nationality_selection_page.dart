@@ -46,7 +46,7 @@ class _NationalitySelectionPageState extends State<NationalitySelectionPage> {
             Spacer(),
             Text(
               'Welcome to Borzo!',
-              style: TextStyle(fontSize: 32, fontWeight: FontWeight.bold),
+              style: TextStyle(fontSize: 28, fontWeight: FontWeight.bold),
             ),
             SizedBox(
               height: 15,
@@ -96,7 +96,7 @@ class _NationalitySelectionPageState extends State<NationalitySelectionPage> {
             ),
             ElevatedButton(
               child: Text('Yes',
-                  style: TextStyle(fontSize: 20, color: Colors.white)),
+                  style: TextStyle(fontSize: 17, color: Colors.white)),
               style: ElevatedButton.styleFrom(
                   elevation: 0,
                   backgroundColor: blueColor,

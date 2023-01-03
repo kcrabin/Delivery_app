@@ -22,14 +22,14 @@ class ScheduleBottomSheet extends StatelessWidget {
         ),
         const Text(
           'Schedule',
-          style: TextStyle(fontWeight: FontWeight.bold, fontSize: 32),
+          style: TextStyle(fontWeight: FontWeight.bold, fontSize: 28),
         ),
         SizedBox(
           height: 10,
         ),
         Text(
           'We will arrive at each address at specified times',
-          style: TextStyle(fontSize: 17, color: Colors.grey),
+          style: TextStyle(fontSize: 14, color: Colors.grey),
         ),
         SizedBox(
           height: 10,
@@ -38,11 +38,11 @@ class ScheduleBottomSheet extends StatelessWidget {
           children: [
             const Text(
               'from ₹ ',
-              style: TextStyle(fontSize: 30, fontWeight: FontWeight.w500),
+              style: TextStyle(fontSize: 26, fontWeight: FontWeight.w500),
             ),
             const Text(
               '45',
-              style: TextStyle(fontSize: 30, fontWeight: FontWeight.w500),
+              style: TextStyle(fontSize: 26, fontWeight: FontWeight.w500),
             ),
           ],
         ),
@@ -81,7 +81,7 @@ class ScheduleBottomSheet extends StatelessWidget {
         Text(
           'Delivery by 2-wheelers or public transport.',
           style: TextStyle(
-            fontSize: 17,
+            fontSize: 14,
           ),
         ),
         Divider(
@@ -106,7 +106,7 @@ class ScheduleBottomSheet extends StatelessWidget {
         Text(
           'Up to 20 kg',
           style: TextStyle(
-            fontSize: 17,
+            fontSize: 14,
           ),
         ),
         Divider(
@@ -131,7 +131,7 @@ class ScheduleBottomSheet extends StatelessWidget {
         Text(
           'You can choose insurance amount.',
           style: TextStyle(
-            fontSize: 17,
+            fontSize: 14,
           ),
         ),
         Divider(

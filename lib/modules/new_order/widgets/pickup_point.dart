@@ -76,7 +76,7 @@ class _PickupPointState extends State<PickupPoint> {
                   style: TextStyle(
                       fontWeight: FontWeight.bold,
                       color: Colors.black,
-                      fontSize: 22),
+                      fontSize: 17),
                 ),
               ],
             ),
@@ -89,7 +89,7 @@ class _PickupPointState extends State<PickupPoint> {
                   Column(
                     children: [
                       SizedBox(
-                        height: clickedAdditionalServices == false ? 320 : 420,
+                        height: clickedAdditionalServices == false ? 305 : 405,
                         child: VerticalDivider(
                           color: Colors.black,
                           width: 25,
@@ -133,7 +133,7 @@ class _PickupPointState extends State<PickupPoint> {
                                       locationSelected == ''
                                           ? 'Address selected'
                                           : locationSelected,
-                                      style: TextStyle(fontSize: 17),
+                                      style: TextStyle(fontSize: 14),
                                     ),
                                   ),
                                 ),
@@ -182,7 +182,7 @@ class _PickupPointState extends State<PickupPoint> {
                                     Text(
                                       'Enter the address to find out\nwhen the courier will arrive',
                                       style: TextStyle(
-                                        fontSize: 17,
+                                        fontSize: 14,
                                       ),
                                     )
                                   ],
@@ -247,8 +247,8 @@ class _PickupPointState extends State<PickupPoint> {
                                           Text(
                                             'Instruction for the courier',
                                             style: TextStyle(
-                                                fontSize: 22,
-                                                fontWeight: FontWeight.bold),
+                                                fontSize: 18,
+                                                fontWeight: FontWeight.w400),
                                           ),
                                           Container(
                                             width: 150,
@@ -280,7 +280,7 @@ class _PickupPointState extends State<PickupPoint> {
                                             ]),
                                           ),
                                           SizedBox(
-                                            child: CustomTextfield(
+                                            child: CustomTextfieldAdditionalService(
                                                 hint:
                                                     'For example call in 30 minutes'),
                                           ),
@@ -290,7 +290,7 @@ class _PickupPointState extends State<PickupPoint> {
                                           ElevatedButton(
                                             child: Text('Confirm',
                                                 style: TextStyle(
-                                                    fontSize: 22,
+                                                    fontSize: 18,
                                                     color: Colors.white)),
                                             style: ElevatedButton.styleFrom(
                                                 elevation: 0,
@@ -321,8 +321,8 @@ class _PickupPointState extends State<PickupPoint> {
                                   Text(
                                     'Instruction for the courier',
                                     style: TextStyle(
-                                        fontSize: 20,
-                                        fontWeight: FontWeight.w600),
+                                        fontSize: 17,
+                                        fontWeight: FontWeight.w500),
                                   ),
                                 ],
                               ),
@@ -341,7 +341,7 @@ class _PickupPointState extends State<PickupPoint> {
                         ),
                         const Text(
                           'The courier will buy out the goods, recieve cash or carry out the instruction.',
-                          style: TextStyle(fontSize: 16, color: Colors.grey),
+                          style: TextStyle(fontSize: 14, color: Colors.grey),
                         ),
                         const SizedBox(
                           height: 10,
@@ -363,7 +363,7 @@ class _PickupPointState extends State<PickupPoint> {
                               const Text(
                                 'Additional services',
                                 style: TextStyle(
-                                    fontSize: 22,
+                                    fontSize: 18,
                                     fontWeight: FontWeight.w500,
                                     color: Colors.grey),
                               ),

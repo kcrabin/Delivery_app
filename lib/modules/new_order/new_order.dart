@@ -169,7 +169,7 @@ class _NewOrderState extends State<NewOrder> {
           title: const Text(
             "New order",
             style: TextStyle(
-                color: Colors.black, fontSize: 25, fontWeight: FontWeight.w600),
+                color: Colors.black, fontSize: 20, fontWeight: FontWeight.w600),
           ),
           actions: [
             TextButton(
@@ -183,7 +183,7 @@ class _NewOrderState extends State<NewOrder> {
                 'Clear',
                 style: TextStyle(
                     color: Colors.black,
-                    fontSize: 20,
+                    fontSize: 15,
                     fontWeight: FontWeight.w500),
               ),
               style: TextButton.styleFrom(
@@ -304,7 +304,7 @@ class _NewOrderState extends State<NewOrder> {
                                               ElevatedButton(
                                                 child: Text('Confirm',
                                                     style: TextStyle(
-                                                        fontSize: 22,
+                                                        fontSize: 18,
                                                         color: Colors.white)),
                                                 style: ElevatedButton.styleFrom(
                                                     elevation: 0,
@@ -449,7 +449,7 @@ class _NewOrderState extends State<NewOrder> {
                                               ElevatedButton(
                                                 child: Text('Confirm',
                                                     style: TextStyle(
-                                                        fontSize: 22,
+                                                        fontSize: 18,
                                                         color: Colors.white)),
                                                 style: ElevatedButton.styleFrom(
                                                     elevation: 0,
@@ -507,19 +507,19 @@ class _NewOrderState extends State<NewOrder> {
                           ? Text(
                               'We will assign the nearest courier to pick-up and deliver as soon as possible.',
                               style:
-                                  TextStyle(fontSize: 17, color: Colors.grey),
+                                  TextStyle(fontSize: 14, color: Colors.grey),
                             )
                           : Text(
                               'We will arrive at each address at specified times.',
                               style:
-                                  TextStyle(fontSize: 17, color: Colors.grey),
+                                  TextStyle(fontSize: 14, color: Colors.grey),
                             ),
                       // const Text(
                       //   'and deliver as soon as possible.',
                       //   style: TextStyle(fontSize: 15, color: Colors.grey),
                       // ),
                       const SizedBox(
-                        height: 15,
+                        height: 10,
                       ),
                       Row(
                         children: [
@@ -546,7 +546,7 @@ class _NewOrderState extends State<NewOrder> {
                                             Text(
                                               'Delivery options',
                                               style: TextStyle(
-                                                  fontSize: 22,
+                                                  fontSize: 18,
                                                   fontWeight: FontWeight.bold),
                                             ),
                                             ListTile(
@@ -558,7 +558,7 @@ class _NewOrderState extends State<NewOrder> {
                                               subtitle: Text(
                                                 'Hyperlocal is km based tariff. It is the best option for short distance deliveries under 5 km.',
                                                 style: TextStyle(
-                                                    fontSize: 17,
+                                                    fontSize: 14,
                                                     color: Colors.grey),
                                               ),
                                               trailing: Icon(
@@ -583,7 +583,7 @@ class _NewOrderState extends State<NewOrder> {
                                     const Text(
                                       'Book a Courier',
                                       style: TextStyle(
-                                        fontSize: 20,
+                                        fontSize: 17,
                                       ),
                                     ),
                                     Icon(
@@ -620,7 +620,7 @@ class _NewOrderState extends State<NewOrder> {
                                               Text(
                                                 'Parcel weight',
                                                 style: TextStyle(
-                                                    fontSize: 22,
+                                                    fontSize: 18,
                                                     fontWeight:
                                                         FontWeight.bold),
                                               ),
@@ -692,7 +692,7 @@ class _NewOrderState extends State<NewOrder> {
                                     Text(
                                       deliveryItemWeight,
                                       style: TextStyle(
-                                        fontSize: 20,
+                                        fontSize: 17,
                                       ),
                                     ),
                                     Icon(
@@ -711,17 +711,17 @@ class _NewOrderState extends State<NewOrder> {
                       ),
                       const Text(
                         'Hyperlocal is km based tariff. It is the best Option for short distance deliveries under 5 km.',
-                        style: TextStyle(fontSize: 17, color: Colors.grey),
+                        style: TextStyle(fontSize: 14, color: Colors.grey),
                       ),
 
                       const SizedBox(
-                        height: 15,
+                        height: 10,
                       ),
 
                       PickupPoint(
                           scheduleContainerClicked: scheduleContainerSelected),
                       SizedBox(
-                        height: 20,
+                        height: 15,
                       ),
                       ListView.builder(
                           physics: NeverScrollableScrollPhysics(),
@@ -761,7 +761,7 @@ class _NewOrderState extends State<NewOrder> {
                               Text(
                                 'Add Delivery Point',
                                 style: TextStyle(
-                                    fontSize: 20, fontWeight: FontWeight.w500),
+                                    fontSize: 17, fontWeight: FontWeight.w500),
                               ),
                             ],
                           ),
@@ -785,7 +785,7 @@ class _NewOrderState extends State<NewOrder> {
 
                       const Text(
                         'Our algorithm will optimize the route points, ensuring the route is more convenient for the courier and cheaper for you. Use if particular sequence of route points does not matter.',
-                        style: TextStyle(fontSize: 17, color: Colors.grey),
+                        style: TextStyle(fontSize: 14, color: Colors.grey),
                       ),
                     ],
                   ),
@@ -816,7 +816,7 @@ class _NewOrderState extends State<NewOrder> {
                         style: TextStyle(
                             fontWeight: FontWeight.bold,
                             color: Colors.black,
-                            fontSize: 22),
+                            fontSize: 18),
                       ),
                       SizedBox(
                         height: 10,
@@ -869,11 +869,11 @@ class _NewOrderState extends State<NewOrder> {
                   children: [
                     const Text(
                       '₹ ',
-                      style: TextStyle(fontSize: 22),
+                      style: TextStyle(fontSize: 18),
                     ),
                     const Text(
                       '45',
-                      style: TextStyle(fontSize: 22),
+                      style: TextStyle(fontSize: 18),
                     ),
                     IconButton(
                         onPressed: () {
@@ -919,7 +919,7 @@ class _NewOrderState extends State<NewOrder> {
               ),
               ElevatedButton(
                 child: Text('Create order',
-                    style: TextStyle(fontSize: 22, color: Colors.white)),
+                    style: TextStyle(fontSize: 18, color: Colors.white)),
                 style: ElevatedButton.styleFrom(
                     elevation: 0,
                     backgroundColor: blueColor,

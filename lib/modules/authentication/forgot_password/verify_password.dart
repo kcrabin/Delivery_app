@@ -38,7 +38,7 @@ class _VerifyPasswordWithOTPState extends State<VerifyPasswordWithOTP> {
             Text(
               'Verify OTP to reset password. ',
               style: TextStyle(
-                fontSize: 32,
+                fontSize: 28,
                 fontWeight: FontWeight.bold,
               ),
             ),
@@ -51,10 +51,10 @@ class _VerifyPasswordWithOTPState extends State<VerifyPasswordWithOTP> {
               borderColor: Colors.grey.shade300,
               focusedBorderColor: blueColor,
               styles: [
-                TextStyle(fontWeight: FontWeight.bold, fontSize: 20),
-                TextStyle(fontWeight: FontWeight.bold, fontSize: 20),
-                TextStyle(fontWeight: FontWeight.bold, fontSize: 20),
-                TextStyle(fontWeight: FontWeight.bold, fontSize: 20)
+                TextStyle(fontWeight: FontWeight.bold, fontSize: 17),
+                TextStyle(fontWeight: FontWeight.bold, fontSize: 17),
+                TextStyle(fontWeight: FontWeight.bold, fontSize: 17),
+                TextStyle(fontWeight: FontWeight.bold, fontSize: 17)
               ],
               showFieldAsBox: false,
               borderWidth: 2.0,

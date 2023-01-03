@@ -35,7 +35,7 @@ class _PackageContainerState extends State<PackageContainer> {
           Text(
             'Package',
             style: TextStyle(
-                fontWeight: FontWeight.bold, color: Colors.black, fontSize: 22),
+                fontWeight: FontWeight.bold, color: Colors.black, fontSize: 17),
           ),
           SizedBox(
             height: 10,
@@ -73,7 +73,7 @@ class _PackageContainerState extends State<PackageContainer> {
                         ),
                         child: Text(
                           items[index],
-                          style: TextStyle(color: Colors.black, fontSize: 20),
+                          style: TextStyle(color: Colors.black, fontSize: 17),
                         ),
                       ),
                     ),
@@ -92,7 +92,7 @@ class _PackageContainerState extends State<PackageContainer> {
           ),
           const Text(
             'We will compensate he value of lost items within three working days according to the rules. Maximum compensation - 50,000',
-            style: TextStyle(fontSize: 17, color: Colors.grey),
+            style: TextStyle(fontSize: 14, color: Colors.grey),
           ),
           SizedBox(
             height: 10,

@@ -59,7 +59,7 @@ class _ReportProblemState extends State<ReportProblem> {
         title: Text(
           'Report an issue',
           style: TextStyle(
-              fontWeight: FontWeight.bold, fontSize: 22, color: Colors.black),
+              fontWeight: FontWeight.bold, fontSize: 18, color: Colors.black),
         ),
       ),
       body: SingleChildScrollView(
@@ -99,7 +99,7 @@ class _ReportProblemState extends State<ReportProblem> {
                                       'Technical issue',
                                       style: TextStyle(
                                         color: Colors.black,
-                                        fontSize: 20,
+                                        fontSize: 17,
                                       ),
                                     ),
                                   ),
@@ -114,7 +114,7 @@ class _ReportProblemState extends State<ReportProblem> {
                                       'Other',
                                       style: TextStyle(
                                         color: Colors.black,
-                                        fontSize: 20,
+                                        fontSize: 17,
                                       ),
                                     ),
                                   ),
@@ -129,7 +129,7 @@ class _ReportProblemState extends State<ReportProblem> {
                     children: [
                       Text(
                         issueType,
-                        style: TextStyle(fontSize: 17),
+                        style: TextStyle(fontSize: 14),
                       ),
                       Icon(
                         Icons.chevron_right,
@@ -196,7 +196,7 @@ class _ReportProblemState extends State<ReportProblem> {
                 ),
                 Text(
                   'Do you want to upload a screenshot?',
-                  style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold),
+                  style: TextStyle(fontSize: 17, fontWeight: FontWeight.bold),
                 ),
                 SizedBox(
                   height: 10,
@@ -279,7 +279,7 @@ class _ReportProblemState extends State<ReportProblem> {
           padding: const EdgeInsets.all(8.0),
           child: ElevatedButton(
             child: Text('Submit',
-                style: TextStyle(fontSize: 20, color: Colors.white)),
+                style: TextStyle(fontSize: 17, color: Colors.white)),
             style: ElevatedButton.styleFrom(
                 elevation: 0,
                 backgroundColor: blueColor,

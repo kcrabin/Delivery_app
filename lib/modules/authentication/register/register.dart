@@ -49,7 +49,7 @@ class _RegisterPageState extends State<RegisterPage> {
               Text(
                 'Mobile No',
                 style: TextStyle(
-                  fontSize: 32,
+                  fontSize: 28,
                   fontWeight: FontWeight.bold,
                 ),
               ),
@@ -57,7 +57,7 @@ class _RegisterPageState extends State<RegisterPage> {
                 'OTP will be sent on this number.',
                 style: TextStyle(
                   color: Colors.grey,
-                  fontSize: 18,
+                  fontSize: 15,
                 ),
               ),
               SizedBox(
@@ -93,13 +93,13 @@ class _RegisterPageState extends State<RegisterPage> {
                         children: [
                           TextSpan(
                             text: 'By registering or signing in you acept the ',
-                            style: TextStyle(color: Colors.grey, fontSize: 15),
+                            style: TextStyle(color: Colors.grey, fontSize: 14),
                           ),
                           TextSpan(
                             text: 'Terms and conditions ',
                             style: TextStyle(
                               color: blueColor,
-                              fontSize: 15,
+                              fontSize: 14,
                             ),
                             recognizer: new TapGestureRecognizer()
                               ..onTap = () => print('Terms and conditions'),
@@ -107,20 +107,20 @@ class _RegisterPageState extends State<RegisterPage> {
                           TextSpan(
                             text:
                                 'and confirms that you\'ve read and acknowledged the ',
-                            style: TextStyle(color: Colors.grey, fontSize: 15),
+                            style: TextStyle(color: Colors.grey, fontSize: 14),
                           ),
                           TextSpan(
                             text: 'Privacy Policy ',
                             style: TextStyle(
                               color: blueColor,
-                              fontSize: 15,
+                              fontSize: 14,
                             ),
                             recognizer: new TapGestureRecognizer()
                               ..onTap = () => print('Privacy Policy'),
                           ),
                           TextSpan(
                             text: 'of Borzo PVT ltd.',
-                            style: TextStyle(color: Colors.grey, fontSize: 15),
+                            style: TextStyle(color: Colors.grey, fontSize: 14),
                           ),
                         ],
                       ),

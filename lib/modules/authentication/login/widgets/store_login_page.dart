@@ -96,7 +96,7 @@ class _StoreLoginPageState extends State<StoreLoginPage> {
                 },
                 child: Text(
                   'Forgot password?',
-                  style: TextStyle(color: blueColor, fontSize: 18),
+                  style: TextStyle(color: blueColor, fontSize: 15),
                 ),
               ),
               ElevatedButton(

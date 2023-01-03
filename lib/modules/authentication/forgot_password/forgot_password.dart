@@ -46,7 +46,7 @@ class _ForgotPasswordState extends State<ForgotPassword> {
             children: [
               Text(
                 'Your phone',
-                style: TextStyle(fontSize: 32, fontWeight: FontWeight.bold),
+                style: TextStyle(fontSize: 28, fontWeight: FontWeight.bold),
               ),
               Text(
                 'An SMS verification code will be sent to this number.',

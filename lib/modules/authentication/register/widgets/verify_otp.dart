@@ -45,7 +45,7 @@ class _VerifyOTPState extends State<VerifyOTP> {
             Text(
               'Mobile No ',
               style: TextStyle(
-                fontSize: 32,
+                fontSize: 28,
                 fontWeight: FontWeight.bold,
               ),
             ),
@@ -53,7 +53,7 @@ class _VerifyOTPState extends State<VerifyOTP> {
               'OTP will be sent on this $phoneNumber',
               style: TextStyle(
                 color: Colors.grey,
-                fontSize: 18,
+                fontSize: 15,
               ),
             ),
             SizedBox(
@@ -65,10 +65,10 @@ class _VerifyOTPState extends State<VerifyOTP> {
               borderColor: Colors.grey.shade300,
               focusedBorderColor: blueColor,
               styles: [
-                TextStyle(fontWeight: FontWeight.bold, fontSize: 20),
-                TextStyle(fontWeight: FontWeight.bold, fontSize: 20),
-                TextStyle(fontWeight: FontWeight.bold, fontSize: 20),
-                TextStyle(fontWeight: FontWeight.bold, fontSize: 20)
+                TextStyle(fontWeight: FontWeight.bold, fontSize: 17),
+                TextStyle(fontWeight: FontWeight.bold, fontSize: 17),
+                TextStyle(fontWeight: FontWeight.bold, fontSize: 17),
+                TextStyle(fontWeight: FontWeight.bold, fontSize: 17)
               ],
               showFieldAsBox: false,
               borderWidth: 2.0,

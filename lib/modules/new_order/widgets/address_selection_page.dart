@@ -62,7 +62,7 @@ class _AddressSelectionState extends State<AddressSelection> {
         title: Text(
           'Address selection',
           style: TextStyle(
-              fontSize: 20, fontWeight: FontWeight.bold, color: Colors.black),
+              fontSize: 17, fontWeight: FontWeight.bold, color: Colors.black),
         ),
         leading: IconButton(
           icon: Icon(

@@ -71,7 +71,7 @@ class Chat extends StatelessWidget {
                     Text.rich(TextSpan(
                         text: 'Hi from Borzo 👋',
                         style: TextStyle(
-                            fontSize: 32,
+                            fontSize: 28,
                             fontWeight: FontWeight.bold,
                             color: Colors.white))),
                     Text(

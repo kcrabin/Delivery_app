@@ -12,7 +12,7 @@ class CustonTextButton extends StatelessWidget {
       onPressed: onPressed,
       child: Text(
         name,
-        style: TextStyle(color: Colors.black, fontSize: 20),
+        style: TextStyle(color: Colors.black, fontSize: 17),
       ),
     );
   }

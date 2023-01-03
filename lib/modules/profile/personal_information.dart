@@ -52,7 +52,7 @@ class _PersonalInformationState extends State<PersonalInformation> {
         title: Text(
           'Personal details',
           style: TextStyle(
-              fontWeight: FontWeight.bold, fontSize: 22, color: Colors.black),
+              fontWeight: FontWeight.bold, fontSize: 18, color: Colors.black),
         ),
       ),
       body: Padding(

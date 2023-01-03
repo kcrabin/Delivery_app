@@ -39,7 +39,7 @@ class _LoginPageState extends State<LoginPage> {
         title: Text(
           'Sign in',
           style: TextStyle(
-              color: Colors.black, fontSize: 22, fontWeight: FontWeight.bold),
+              color: Colors.black, fontSize: 15, fontWeight: FontWeight.bold),
         ),
       ),
       body: Padding(
@@ -70,7 +70,7 @@ class _LoginPageState extends State<LoginPage> {
                       style: TextStyle(
                           color:
                               optionPerson == true ? Colors.black : Colors.grey,
-                          fontSize: 18),
+                          fontSize: 15),
                     ),
                   ),
                 ),
@@ -102,7 +102,7 @@ class _LoginPageState extends State<LoginPage> {
                           color: optionPerson == false
                               ? Colors.black
                               : Colors.grey,
-                          fontSize: 18),
+                          fontSize: 15),
                     ),
                   ),
                 ),

@@ -12,7 +12,7 @@ class Utils {
       elevation: 0,
       content: Text(
         text,
-        style: TextStyle(fontSize: 17, fontWeight: FontWeight.bold),
+        style: TextStyle(fontSize: 14, fontWeight: FontWeight.bold),
         textAlign: TextAlign.center,
       ),
       backgroundColor: color.withOpacity(0.4),

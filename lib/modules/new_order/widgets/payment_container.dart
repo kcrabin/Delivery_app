@@ -22,7 +22,7 @@ class _PaymentContainerState extends State<PaymentContainer> {
           Text(
             'Payment',
             style: TextStyle(
-                fontWeight: FontWeight.bold, color: Colors.black, fontSize: 22),
+                fontWeight: FontWeight.bold, color: Colors.black, fontSize: 18),
           ),
           SizedBox(
             height: 10,
@@ -35,7 +35,7 @@ class _PaymentContainerState extends State<PaymentContainer> {
               //   style: TextStyle(
               //       fontWeight: FontWeight.w400,
               //       color: Colors.grey,
-              //       fontSize: 20),
+              //       fontSize: 17),
               // ),
               Expanded(
                   // width: MediaQuery.of(context).size.width / 5,
@@ -85,7 +85,7 @@ class _PaymentContainerState extends State<PaymentContainer> {
                               Text(
                                 'Payment methods',
                                 style: TextStyle(
-                                    fontSize: 22, fontWeight: FontWeight.bold),
+                                    fontSize: 18, fontWeight: FontWeight.bold),
                               ),
                               GestureDetector(
                                 onTap: () {
@@ -161,7 +161,7 @@ class _PaymentContainerState extends State<PaymentContainer> {
                               ElevatedButton(
                                 child: Text('Done',
                                     style: TextStyle(
-                                        fontSize: 20, color: Colors.black)),
+                                        fontSize: 17, color: Colors.black)),
                                 style: ElevatedButton.styleFrom(
                                     elevation: 0,
                                     backgroundColor: Colors.grey.shade200,
@@ -201,7 +201,7 @@ class _PaymentContainerState extends State<PaymentContainer> {
                               ),
                               Text(
                                 'Cash',
-                                style: TextStyle(fontSize: 22),
+                                style: TextStyle(fontSize: 18),
                               )
                             ],
                           )
@@ -213,7 +213,7 @@ class _PaymentContainerState extends State<PaymentContainer> {
                               ),
                               Text(
                                 'Credit Card',
-                                style: TextStyle(fontSize: 22),
+                                style: TextStyle(fontSize: 18),
                               )
                             ],
                           ),

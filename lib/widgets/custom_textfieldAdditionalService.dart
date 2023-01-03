@@ -36,7 +36,7 @@ class CustomTextfieldAdditionalService extends StatelessWidget {
           ),
           hintText: hint,
           labelText: label,
-          hintStyle: TextStyle(fontSize: 20),
+          hintStyle: TextStyle(fontSize: 17),
           suffixIcon: Icon(suffixIcon)),
     );
   }

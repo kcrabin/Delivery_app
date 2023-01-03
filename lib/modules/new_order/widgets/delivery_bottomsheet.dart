@@ -22,14 +22,14 @@ class deliverBottomSheet extends StatelessWidget {
         ),
         const Text(
           'Deliver Now',
-          style: TextStyle(fontWeight: FontWeight.bold, fontSize: 32),
+          style: TextStyle(fontWeight: FontWeight.bold, fontSize: 28),
         ),
         SizedBox(
           height: 10,
         ),
         Text(
           'We will assign the nearest courier to pick-up and deliver as soon as possible.',
-          style: TextStyle(fontSize: 17, color: Colors.grey),
+          style: TextStyle(fontSize: 14, color: Colors.grey),
         ),
         SizedBox(
           height: 10,
@@ -38,11 +38,11 @@ class deliverBottomSheet extends StatelessWidget {
           children: [
             const Text(
               'from ₹ ',
-              style: TextStyle(fontSize: 30, fontWeight: FontWeight.w500),
+              style: TextStyle(fontSize: 26, fontWeight: FontWeight.w500),
             ),
             const Text(
               '45',
-              style: TextStyle(fontSize: 30, fontWeight: FontWeight.w500),
+              style: TextStyle(fontSize: 26, fontWeight: FontWeight.w500),
             ),
           ],
         ),
@@ -81,7 +81,7 @@ class deliverBottomSheet extends StatelessWidget {
         Text(
           'Delivery by 2-wheelers or public transport.',
           style: TextStyle(
-            fontSize: 17,
+            fontSize: 14,
           ),
         ),
         Divider(
@@ -106,7 +106,7 @@ class deliverBottomSheet extends StatelessWidget {
         Text(
           'Up to 20 kg',
           style: TextStyle(
-            fontSize: 17,
+            fontSize: 14,
           ),
         ),
         Divider(
@@ -131,7 +131,7 @@ class deliverBottomSheet extends StatelessWidget {
         Text(
           'You can choose insurance amount.',
           style: TextStyle(
-            fontSize: 17,
+            fontSize: 14,
           ),
         ),
         Divider(

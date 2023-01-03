@@ -42,11 +42,11 @@ class About_us extends StatelessWidget {
                   ),
                   Text(
                     'Borzo',
-                    style: TextStyle(fontSize: 40, fontWeight: FontWeight.bold),
+                    style: TextStyle(fontSize: 35, fontWeight: FontWeight.bold),
                   ),
                   Text(
                     'Version 1.75.1',
-                    style: TextStyle(color: Colors.grey, fontSize: 17),
+                    style: TextStyle(color: Colors.grey, fontSize: 14),
                   ),
                 ],
               ),
@@ -56,7 +56,9 @@ class About_us extends StatelessWidget {
             ),
             CustonTextButton(
               name: 'Service information',
-              onPressed: () {},
+              onPressed: () {
+                Navigator.pushNamed(context, 'serviceInformation');
+              },
             ),
             CustonTextButton(
               name: 'Terms and conditions',
