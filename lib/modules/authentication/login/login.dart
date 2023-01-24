@@ -116,6 +116,17 @@ class _LoginPageState extends State<LoginPage> {
             child: PageView.builder(
               controller: _pageController,
               itemCount: 2,
+              onPageChanged: (value) {
+                if (value == 0) {
+                  setState(() {
+                    optionPerson = true;
+                  });
+                } else {
+                  setState(() {
+                    optionPerson = false;
+                  });
+                }
+              },
               itemBuilder: (context, index) {
                 if (index == 0) {
                   return PersonLoginPage();

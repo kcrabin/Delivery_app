@@ -54,26 +54,15 @@ class _CountryListState extends State<CountryList> {
               padding: const EdgeInsets.symmetric(vertical: 15, horizontal: 20),
               child: GestureDetector(
                 onTap: () async {
-                  // final LocalStorage storage =
-                  //     new LocalStorage('localstorage_app');
                   final SharedPreferences pref =
                       await SharedPreferences.getInstance();
 
                   setState(() {
                     countrySelected = countries[index];
                     pref.setString('country', countrySelected);
-
-                    // print('checking country  $countrySelected');
-                    // SPUtil.writeString('country', countrySelected);
-
-                    // storage.setItem('country', countrySelected);
                   });
-                  // pref.setString(ConstantsStrings.country, countrySelected);
-                  // print(SPUtil.read(ConstantsStrings.name));
-                  print('this id shared pref ---${pref.getString('country')}');
 
-                  // print(
-                  //     'this is retrived from storage ---- ${storage.getItem('country')}');
+                  print('this id shared pref ---${pref.getString('country')}');
 
                   Navigator.pop(context, countrySelected);
                 },

@@ -8,6 +8,7 @@ import 'package:deliveryapp/modules/chat/chat.dart';
 import 'package:deliveryapp/modules/chat/get_help.dart';
 import 'package:deliveryapp/modules/chat/search_page.dart';
 import 'package:deliveryapp/modules/introduction_pages/introduction_page.dart';
+import 'package:deliveryapp/modules/new.dart';
 import 'package:deliveryapp/modules/new_order/new_order.dart';
 import 'package:deliveryapp/modules/new_order/widgets/address_selection_page.dart';
 import 'package:deliveryapp/modules/new_order/widgets/map_screen.dart';
@@ -71,6 +72,7 @@ class MyApp extends StatelessWidget {
         'verifyPasswordWithOTP': (context) => VerifyPasswordWithOTP(),
         'resetPasswordScreen': (context) => ResetPassword(),
         'serviceInformation': (context) => ServiceInformation(),
+        'orders_new': (context) => Orders_new(),
       },
       // home: Orders(),
     );
